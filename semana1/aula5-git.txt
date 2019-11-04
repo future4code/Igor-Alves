@@ -1,0 +1,36 @@
+Comandos Utilizados:
+// 1 a 4 Sequência Introdutória && 1 a 4 Acelerando //
+git commit
+git branch 
+git checkout 
+git merge 
+git rebase 
+git checkout c4
+git checkout c3
+git branch -f master HEAD~1
+git branch -f master c6
+git branch -f bugFix c0
+git checkout c1
+git reset c1
+git revert pushed
+
+// 1 a 7 Push e Pull - Remotos // 
+git clone
+git commit
+git checkout o/master 
+git commit
+git fetch
+git pull
+git fakeTeamwork master 2
+git commit
+git pull
+git commit 
+git commit 
+git pull
+git clone 
+git fakeTeamwork
+git commit
+git pull --rebase
+git push
+
+
