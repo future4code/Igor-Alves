@@ -77,6 +77,8 @@ div img {
 #container-de-descricao p{
     display: block;
     padding-top: 100px;
+    width: 210px;
+    margin: 0 auto;
 }
 
 #container-de-descricao>ol {
