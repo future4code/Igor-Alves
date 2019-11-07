@@ -89,7 +89,7 @@ div img {
 
 #container-de-descricao p{
     display: block;
-    padding-top: 100px;
+    padding-top: 120px;
     width: 210px;
     margin: 0 auto;
 }
@@ -106,9 +106,10 @@ div img {
     color: #c44f00;
     padding: 100px 0;
     font-size: 60px;
+    display: block;
 }
 
-#container-para-comprar a {
+a {
     text-decoration: none;
 }
 
@@ -171,6 +172,9 @@ td button:active {
     border-radius: 5px;
     font-size: 10px;
     color: black;
+    display: block;
+    margin: 0 auto;
+    margin-top: 200px;
 }
 
 #back-button:hover {
