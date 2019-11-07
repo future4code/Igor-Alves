@@ -155,10 +155,12 @@ td button:active {
 
 .container-do-search img:hover {
     opacity: 30%;
+    background-color: black;
 }
 
 .container-do-search img:active {
     opacity: 100%;
+    color: black;
 }
 
 #back-button {
