@@ -4,56 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Adicionar Produtos</title>
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <link href="/estilo.css" rel="stylesheet">
+    <title>Produtos - Umbrella Labs</title>
+    <link type="text/css" rel="stylesheet" href="/estilo.css">
+    <link href="https://fonts.googleapis.com/css?family=Literata&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <section>
-            <img src="https://cdn10.bigcommerce.com/s-yhxhf/products/4914/images/8827/CPV002__50826.1428610899.1080.1080.png?c=2">
+        <div class="container">
+            <a href="/index.html"><img src="https://cdn10.bigcommerce.com/s-yhxhf/products/4914/images/8827/CPV002__50826.1428610899.1080.1080.png?c=2"></a>
             <main>
-                <a href="index.html">Página Inicial</a>
                 <a href="estoque.html">Estoque</a>
+                <a href="produto.html">Produto</a>
                 <a href="funcionarios.html">Funcionários</a>        
             </main>
-        </section>
-        <section>
-            <h1>Produtos</h1>
-            <h4>Deseja adicionar outro produto ao estoque</h4>
-        </section>
+        </div>
     </header>
-    <form action="estoque.html">
-        <div>
-            <label for="foto">Foto: </label><br>
-            <input type="text" id="foto" name="foto"> 
+    <section>
+        <div class="container">
+            <article class="produto">
+                <h2>Deseja Adcionar um Produto?</h2>
+                <form action="estoque.html">
+                    <div>
+                        <label for="foto">Foto: </label><br>
+                        <input type="file" id="foto" name="foto"> 
+                    </div>
+                    <div>
+                        <label for="descrição">Descrição:</label><br>
+                        <input type="text" id="descrição" name="descrição"> 
+                    </div>
+                    <div>
+                        <label for="preço">Preço:</label><br>
+                        <input type="number" id="preço" name="preço"> 
+                    </div>
+                    <div>
+                        <label for="quantidade">Quantidade disponível:</label><br>
+                        <input type="number" id="quantidade" name="quantidade"> 
+                    </div><br>
+                    <button class="botao" type="submit">Enviar</button>
+                </form>
+            </article>
         </div>
-        <div>
-            <label for="descrição">Descrição: </label><br>
-            <input type="text" id="descrição" name="descrição"> 
-        </div>
-        <div>
-            <label for="preço">Preço: </label><br>
-            <input type="text" id="preço" name="preço"> 
-        </div>
-        <div>
-            <label for="quantidade">Quantidade disponível: </label><br>
-            <input type="text" id="quantidade" name="quantidade"> 
-        </div><br>
-        <button type="submit">Enviar</button>
-    </form><br>
+    </section>
     <footer>
-        <div>
-            <h3>Sac e Atendimento e Redes Sociais</h3><br>
-            <p>Endereço: Lorem ipsum dolor sit amet.</p>
-            <p>Telefone: Lorem ipsum dolor sit amet.</p>
-            <p>Chat: Lorem ipsum dolor sit amet.</p><br>
-        </div>
-        <div>
-            <h3>Redes Sociais</h3><br>
-            <p>Facebook: @Lorem ipsum </p>
-            <p>Instagram: @Lorem ipsum </p>
-            <p>Twitter: @Lorem ipsum </p>
+        <div class="container">
+            <article class="redes-sociais">
+                <img src="https://cdn10.bigcommerce.com/s-yhxhf/products/4914/images/8827/CPV002__50826.1428610899.1080.1080.png?c=2" alt="Logo">
+                <h3>Nossas Redes Sociais</h3>
+                <ul>
+                    <li><a href=""><img src="img/facebook.png"></a></li>
+                    <li><a href=""><img src="img/twitter.png"></a></li>
+                    <li><a href=""><img src="img/instagram.png"></a></li>
+                    <li><a href=""><img src="img/whatsapp.png"></a></li>
+                </ul>
+            </article>
         </div>
     </footer>
 </body>

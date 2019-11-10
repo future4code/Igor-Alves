@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Literata', serif;
+}
+
+.container {
+    width: 980px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+header {
+    height: 60px;
+    width: 100%;
+    background-color: #1F2428;
+    border-bottom: 2px solid #2EBC4F;
+}
+
+header img {
+    width: 45px;
+    height: 45px;
+    margin-top: 7px;
+}
+
+header nav {
+    display: inline;
+    margin-left: 80%;
+    text-align: right;
+    position: relative;
+    bottom: 40px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #FAFBFC;
+    padding-left: 90px;
+    margin-bottom: 10px;
+}
+
+nav a:hover {
+    color: #2EBC4F;
+}
+
+nav a:active {
+    color: #2EBC4F;
+}
+
+section {
+    background-color: #ffffff;
+}
+
+.contato h2 {
+    font-weight: bolder;
+    padding: 80px 0 100px 0;
+    text-align: center;
+}
+
+form {
+    margin: 0 340px;
+}
+
+fieldset {
+    border: none;
+    position: relative;
+    right: 25%;
+}
+
+.campo {
+    margin-bottom: 10px;
+}
+
+.campo label {
+    margin-bottom: 10px;
+    color: #666;
+    display: block;
+}
+
+.campo input, .campo textarea {
+    padding: 0.2em;
+    border: 1px solid #CCC;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    display: block;
+}
+
+.botao {
+    font-size: 25px;
+    background: #2EBC4F;
+    border: 0;
+    color: #FFF;
+    padding: 10px 20px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    margin: 30px 0px 100px 170px;
+    border-radius: 10px;
+}
+
+.botao:hover {
+    background: #2EBC4F;
+    box-shadow: inset 2px 2px 2px rgba(0,0,0,0.2);
+    text-shadow: none;
+}
+
+footer {
+    background-color: #2B3137;
+    position: relative;
+    bottom: 0;
+    margin: 0 auto;
+    text-align: center;
+    border-top: 2px solid #2EBC4F;
+    bottom: 0;
+}
+
+footer img {
+    padding: 60px 0 10px 0;
+}
+
+footer h3 {
+    display: block;
+    width: 100%;
+    color: #2EBC4F;
+}
+
+footer ul {
+    padding: 30px 0;
+}
+
+footer ul li {
+    display: inline;
+    margin: 0 22.5px;
+    width: 100%;
+}
+
+footer ul li img {
+    width: 45px;
+    height: 45px;
+}
