@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    color: white;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 7vh 60vh 13vh 13vh 7vh;
+}
+
+header {
+    background-color: #2ECC40;
+    grid-row: 1 / span 1;
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    background-color: #FFDC00;
+    grid-row: 1 / span 1;
+    grid-column: span 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section {
+    background-color: #F012BE;
+    grid-row: 2 / span 1;
+    grid-column: span 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+article {
+    background-color: #0074D9;
+    grid-row: 3 / span 2;
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+aside {
+    background-color: #ffffff;
+    grid-row: 3 / span 2;
+    grid-column: span 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+figure {
+    background-color: #FF4136;
+    grid-row: 3 / span 1;
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid > div{
+    background-color: #01FF70;
+    grid-row: 4 / span 1;
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    background-color: #B10DC9;
+    grid-row: 5 / span 1;
+    grid-column: span 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
