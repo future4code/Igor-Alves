@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    color: black;
+    font-size: 1.5em;
+}
+
+header {
+    display: flex;
+    height: 7vh;
+    background-color: red;
+}
+
+.flex > section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section > div{
+    display: flex;
+}
