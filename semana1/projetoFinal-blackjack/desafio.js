@@ -3,62 +3,95 @@ import comprarCarta from './naoMexer.js'
 
 console.log ("Bem vindo ao jogo de Blackjack!")
 
-if (confirm("Quer iniciar uma nova rodada?")){
-   let cartaJogador = comprarCarta()
-   let cartaComputador = comprarCarta() 
-   let naipesJogador = []
-   let naipesComputador = [] 
-   let pontuacaoJogador = 0
-   let pontuacaoComputador = 0
-   let cartasTiradas = 0
- 
+let querJogar = confirm("Quer iniciar uma nova rodada?")
 
+if (querJogar){
+  const cartaJogador = [comprarCarta(), comprarCarta()]
+  const cartaComputador = [comprarCarta(), comprarCarta()] 
+  let naipesJogador = [cartaJogador[0].texto + " " + cartaJogador[1].texto]
+  let naipesComputador = [cartaComputador[0].texto + " " + cartaComputador[1].texto]
+  let pontuacaoJogador = 0
+  let pontuacaoComputador = 0
+  let querMais = confirm("Suas cartas são " + naipesJogador + ". A carta revelada do computador é " + naipesComputador + ". Deseja comprar mais uma carta?")
 
-   while (cartasTiradas < 2){
-      cartaJogador = comprarCarta()
-      cartaComputador = comprarCarta()
-      naipesJogador.push(cartaJogador.texto)  
-      pontuacaoJogador += cartaJogador.valor
-      naipesComputador.push(cartaComputador.texto)
-      pontuacaoComputador += cartaComputador.valor
+  while (querMais) {
+    const novaCarta = comprarCarta()
 
-      if(pontuacaoJogador === 22 || pontuacaoComputador === 22){
-         cartaJogador = comprarCarta()
-         cartaComputador = comprarCarta()
-         naipesJogador += cartaJogador.texto 
-         pontuacaoJogador += cartaJogador.valor
-         naipesComputador += cartaComputador.texto
-         pontuacaoComputador += cartaComputador.valor
+    cartaJogador.push(novaCarta)
+
+    pontuacaoJogador = 0
+
+    for (let carta of cartaJogador) {
+      pontuacaoJogador += carta.valor
+    }
+
+    if (pontuacaoJogador < 21) {
+      naipesJogador = ""
+
+      for (let carta of cartaJogador) {
+        naipesJogador += " " + carta.texto
       }
-      cartasTiradas += 1
-  }
+    
+      querMais = confirm("Suas cartas são" + naipesJogador + ". A carta revelada do computador é " + naipesComputador + ". Deseja comprar mais uma carta?")
 
-  while (pontuacaoJogador !== 21){
-    if (confirm("Suas cartas são " + naipesJogador[0] + " " + naipesJogador[1] + ". A carta revelada do computador é " + naipesComputador[0] + "." + "\n" + "Deseja comprar mais uma carta? ")){
-        cartaJogador = comprarCarta()
-        cartaComputador = comprarCarta()
-        naipesJogador.push(cartaJogador.texto)  
-        pontuacaoJogador += cartaJogador.valor
-        naipesComputador.push(cartaComputador.texto)
-        pontuacaoComputador += cartaComputador.valor
-      } else {
-        conlose.log("")
+    } else {
+      querMais = false
+    }
+    
+  } 
+
+    pontuacaoJogador = 0
+
+    for (let carta of cartaJogador) {
+      pontuacaoJogador += carta.valor
+    }
+
+    for (let carta of cartaComputador) {
+      pontuacaoComputador += carta.valor
+    }
+
+    let computadorCompraOutra = pontuacaoJogador <= 21 && pontuacaoComputador <= pontuacaoJogador
+
+    while (computadorCompraOutra) {
+      const novaCarta = comprarCarta()
+
+      cartaComputador.push(novaCarta)
+
+      pontuacaoComputador = 0
+
+      for (let carta of cartaComputador){
+        pontuacaoComputador += carta.valor
       }
+
+      computadorCompraOutra = pontuacaoJogador <= 21 && pontuacaoComputador <= pontuacaoJogador
+    }
+
+    let resultado
+
+    if (pontuacaoJogador > 21) {
+      resultado = "O computador ganhou!"
+    } else if (pontuacaoComputador > 21){
+      resultado = "O usuário ganhou!"
+    } else if (pontuacaoComputador > pontuacaoJogador){
+      resultado = "O computador ganhou!"
+    } else if (pontuacaoComputador < pontuacaoJogador){
+      resultado = "O usuário ganhou!"
+    } else {
+      resultado = "Empate!"
+    }
+
+    naipesJogador = ""
+    naipesComputador = ""
+
+    for (let carta of cartaJogador){
+      naipesJogador += " " + carta.texto
+    }
+    
+    for(let carta of cartaComputador){
+      naipesComputador += " " + carta.texto
+    }
+
+    alert("Suas cartas são" + naipesJogador + ". Sua pontuação é " + pontuacaoJogador + ". As cartas do computador são" + naipesComputador + ". A pontuação do computador é " + pontuacaoComputador + ". " + resultado)
+  } else {
+    console.log("O jogo acabou!")
   }
-
-
-  //  console.log("Usuário - cartas: " + naipesJogador + " - pontuação " + pontuacaoJogador)
-  //  console.log("Computador - cartas: " + naipesComputador + " - pontuação " + pontuacaoComputador)
-
-  //  if (pontuacaoJogador > pontuacaoComputador){
-  //     console.log("O usuário ganhou!")
-  //  } else if (pontuacaoJogador < pontuacaoComputador){
-  //     console.log("O computador ganhou!")
-  //  } else {
-  //     console.log("Empate!")
-  //  }
-
-} else{
-   console.log("O jogo acabou")
-}
-
