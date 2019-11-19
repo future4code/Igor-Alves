@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    height: 10vh;
+    background-color: darkblue;
+    color: white;
+    justify-content: center;
+    align-items: center
+}
+
+header input {
+    margin: 0.5rem;
+    width: 15em;
+    height: 1.5em;
+}
+
+header button {
+    margin-left: 1rem;
+    height: 1.9em;
+    background-color: white;
+    padding: 0.25rem;
+}
+
+header button:hover {
+    background-color: greenyellow;
+}
+
+header select {
+    height: 1.9em;
+}
+
+section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 88vh;
+    justify-items: center;
+    margin-top: 1em;
+}
+
+section div {
+    width: 100%;
+    text-align: center;
+    border-right: 2px solid black;
+}
+
+section div:last-of-type {
+    border: none
+}
+
+section h3 {
+    border-bottom: 1px solid black;
+}
+
+section div li {
+    width: 85%;
+    text-align: initial;
+    padding: 1em;
+}
