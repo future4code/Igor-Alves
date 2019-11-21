@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 30pt;
+    text-align: center;
+    margin: 2em 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+input {
+    width: 30em;
+    height: 1.5em;
+    margin: 1em auto;
+}
+
+textarea {
+    width: 30em;
+    margin: 1em auto;
+    height: 6em;
+}
+
+button {
+    width: 5em;
+    margin: 1em auto;
+    height: 2em;
+}
+
+h2 {
+    font-size: 18pt;
+    text-align: center;
+    margin: 2em 0;
+}
+
+section {
+    text-align: justify;
+}
+
+section p {
+    width: 20em;
+    margin: 0 auto;
+    display: flex;
+}
+
+section p:nth-of-type(3n+3) {
+    margin-bottom: 2em;
+}

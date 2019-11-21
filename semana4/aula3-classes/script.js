@@ -15,13 +15,27 @@ function criarPostagem() {
     let post = new postagem(title.value, writer.value, coment.value)
     
     postDaPágina.push(post)
-    console.log(postDaPágina)
-
+    
     title.value = ""
     writer.value = ""
     coment.value = ""
+    
+    publicarPost()
 }
 
+const publicados = document.getElementById("post-publicados")
+
 function publicarPost() {
-    
+    publicados.innerHTML = ""
+    for(post of postDaPágina){
+        publicados.innerHTML += "<p> Titulo: " + post.titulo + "</p>"
+        publicados.innerHTML += "<p> Autor: " + post.autor + "</p>"
+        publicados.innerHTML += "<p> Comentário: " + post.comentario + "</p>"
+    }
+}
+
+function keyEnter(e) {
+    if (e.key === "Enter"){
+        criarPostagem()
+    }
 }
