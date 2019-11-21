@@ -20,5 +20,8 @@ function criarPostagem() {
     title.value = ""
     writer.value = ""
     coment.value = ""
+}
+
+function publicarPost() {
     
 }
