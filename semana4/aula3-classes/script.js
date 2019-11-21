@@ -6,11 +6,19 @@ class postagem {
     }
 }
 
-
+const postDaPágina = []
 
 function criarPostagem() {
-    const title = document.getElementById("titulo").value
-    const writer = document.getElementById("autor").value
-    const coment = document.getElementById("comentario").value
-    let post = new postagem(title, writer, coment)
+    let title = document.getElementById("titulo")
+    let writer = document.getElementById("autor")
+    let coment = document.getElementById("comentario")
+    let post = new postagem(title.value, writer.value, coment.value)
+    
+    postDaPágina.push(post)
+    console.log(postDaPágina)
+
+    title.value = ""
+    writer.value = ""
+    coment.value = ""
+    
 }
