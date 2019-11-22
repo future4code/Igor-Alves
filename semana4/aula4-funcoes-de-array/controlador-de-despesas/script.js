@@ -9,17 +9,23 @@ class Despesa{
 const totalDespesas = []
 
 function salvarDespesa() {
-    const valor = document.getElementById("valor-cadastro")
+    const valor =document.getElementById("valor-cadastro")
     const tipo = document.getElementById("tipo-cadastro")
     const descricao = document.getElementById("descricao-cadastro")
-    const novaDespesa = new Despesa(valor.value, tipo.value, descricao.value) 
+    
+    if (valor.value === "" || tipo.value === "" || descricao.value === "") {
+        alert("Todos os campos devem ser preenchidos e o valor da despesa deve ser do tipo númerico.")
+    } else {
+        const novaDespesa = new Despesa(parseInt(valor.value), tipo.value, descricao.value) 
 
-    totalDespesas.push(novaDespesa)
+        totalDespesas.push(novaDespesa)
 
-    valor.value = ""
-    tipo.value = ""
-    descricao.value = ""
-    console.log(totalDespesas)
+        valor.value = ""
+        tipo.value = ""
+        descricao.value = ""
+        console.log(totalDespesas)
+
+    }
 }
 
 
