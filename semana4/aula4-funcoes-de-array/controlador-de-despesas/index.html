@@ -29,24 +29,30 @@
 
     <section>
         <h1>Despesas Detalhadas</h1>
-        <label>Tipo(Casa, Viagem, Rolês, Outros)</label>
-        <select>
+        <label for="tipo-detalhes">Tipo(Casa, Viagem, Rolês, Outros)</label>
+        <select id="tipo-detalhes">
             <option>Casa</option>
             <option>Viagem</option>
             <option>Rolês</option>
             <option>Outros</option>
         </select>
-        <label>Valor Mínimo</label>
-        <input>
-        <label>Valor Máximo</label>
-        <input>
-        <button>Filtrar</button>
+        <label for="valor-minimo">Valor Mínimo</label>
+        <input type="number" id="valor-minimo">
+        <label for="valor-maximo">Valor Máximo</label>
+        <input type="number" id="valor-maximo">
+        <button onclick="filtrarDespesa()">Filtrar</button>
         <button>Limpar Filtros</button>
     </section>
 
     <section>
         <h1>Extrato</h1>
-        <p>Valor Total:</p>
+        <p id="total">Valor Total:</p>
+    </section>
+
+    <section>
+        <div id="lista-despesas">
+            <h2>Lista de Despesas</h2>
+        </div>
     </section>
 
 </body>
