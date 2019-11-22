@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Semana 4 Aula 4</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+    <section>
+        <h1>Controlador de Despesas</h1>
+        <h3>Cadastrar despesa</h3>
+        <label for="valor-cadastro">Valor </label>
+        <input id="valor-cadastro">
+        <label for="tipo-cadastro">Tipo(Casa, Viagem, Rolês, Outros)</label>
+        <select id="tipo-cadastro">
+            <option>Casa</option>
+            <option>Viagem</option>
+            <option>Rolês</option>
+            <option>Outros</option>
+        </select>
+        <label for="descricao-cadastro">Descrição</label>
+        <input id="descricao-cadastro">
+        <button onclick="salvarDespesa()">Cadastrar Despesa</button>
+    </section>
+
+    <section>
+        <h1>Despesas Detalhadas</h1>
+        <label>Tipo(Casa, Viagem, Rolês, Outros)</label>
+        <select>
+            <option>Casa</option>
+            <option>Viagem</option>
+            <option>Rolês</option>
+            <option>Outros</option>
+        </select>
+        <label>Valor Mínimo</label>
+        <input>
+        <label>Valor Máximo</label>
+        <input>
+        <button>Filtrar</button>
+        <button>Limpar Filtros</button>
+    </section>
+
+    <section>
+        <h1>Extrato</h1>
+        <p>Valor Total:</p>
+    </section>
+
+</body>
+</html>
