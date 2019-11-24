@@ -6,52 +6,60 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Semana 4 Aula 4</title>
     <script src="script.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
 
-    <section>
+    <div class="container">
+
+    <section id="controle-despesas">
         <h1>Controlador de Despesas</h1>
         <h3>Cadastrar despesa</h3>
         <label for="valor-cadastro">Valor </label>
-        <input type="number" id="valor-cadastro">
-        <label for="tipo-cadastro">Tipo(Casa, Viagem, Rolês, Outros)</label>
+        <input type="number" id="valor-cadastro" min="1"><br>
+        <label for="tipo-cadastro">Tipo (Casa, Viagem, Rolês, Outros)</label>
         <select id="tipo-cadastro">
             <option>Casa</option>
             <option>Viagem</option>
             <option>Rolês</option>
             <option>Outros</option>
-        </select>
+        </select><br>
         <label for="descricao-cadastro">Descrição</label>
-        <input type="text" id="descricao-cadastro">
+        <input type="text" id="descricao-cadastro"><br>
         <button onclick="salvarDespesa()">Cadastrar Despesa</button>
     </section>
 
-    <section>
+    <section id="detalhe-despesas">
         <h1>Despesas Detalhadas</h1>
-        <label for="tipo-detalhes">Tipo(Casa, Viagem, Rolês, Outros)</label>
+        <label for="tipo-detalhes">Tipo (Casa, Viagem, Rolês, Outros)</label>
         <select id="tipo-detalhes">
             <option>Casa</option>
             <option>Viagem</option>
             <option>Rolês</option>
             <option>Outros</option>
-        </select>
+        </select><br>
         <label for="valor-minimo">Valor Mínimo</label>
-        <input type="number" id="valor-minimo">
+        <input type="number" id="valor-minimo" min="1"><br>
         <label for="valor-maximo">Valor Máximo</label>
-        <input type="number" id="valor-maximo">
+        <input type="number" id="valor-maximo" min="1"><br>
         <button onclick="filtrarDespesa()">Filtrar</button>
-        <button>Limpar Filtros</button>
+        <button onclick="mostrarDespesas()">Limpar Filtros</button>
     </section>
 
     <section>
         <h1>Extrato</h1>
-        <p id="total">Valor Total:</p>
+        <div id="extrato">
+        </div>
+        <h3 id="total">Valor Total:</h3>
     </section>
 
-    <section>
+    </div>
+
+    <section id="vizualizar-despesas">
+        <h1>Lista de Despesas</h1>
         <div id="lista-despesas">
-            <h2>Lista de Despesas</h2>
+        </div>
+        <div id="lista-extrato">
         </div>
     </section>
 
