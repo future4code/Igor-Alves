@@ -1,0 +1,35 @@
+.big-card {
+    border: 1px solid black;
+    align-self: center;
+    display: grid;
+    grid-template-columns: 5em 1fr;
+    grid-template-rows: 1fr;
+    margin: 0.7em 0;
+}
+
+.big-card img {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    margin-left: 0.5em;
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 2;
+    align-self: center;
+    justify-self: center;
+}
+
+.big-card p{
+    grid-column: 2 / span 1;
+    align-self: center;
+    justify-self: initial;
+    width: 90%;
+    margin: 0em auto 2em auto;
+}
+
+.big-card h3{
+    grid-column: 2 / span 1;
+    align-self: center;
+    justify-self: center;
+    width: 90%;
+    margin: 2em auto 1em auto;
+}

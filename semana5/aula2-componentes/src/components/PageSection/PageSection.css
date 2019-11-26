@@ -1,0 +1,9 @@
+.page-section {
+    width: 30vw;
+    min-width: 480px;
+    max-width: 480px;
+}
+
+.page-section h1 {
+    text-align: center;
+}
