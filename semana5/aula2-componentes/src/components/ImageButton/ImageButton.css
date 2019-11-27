@@ -1,0 +1,18 @@
+.image-button {
+    border: 1px solid black;
+    align-self: center;
+    display: flex;
+    width: 40%;
+    margin: 0.7em auto;
+    border-radius: 25px;
+    justify-content: initial;
+    align-items: center;
+}
+
+.image-button img {
+    width: 30px;
+    height: 30px;
+    justify-self: initial;
+    align-self: center;
+    margin: 0.3em 0.5em 0 2em;
+}

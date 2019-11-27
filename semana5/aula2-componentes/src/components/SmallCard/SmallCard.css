@@ -1,0 +1,21 @@
+.small-card {
+    border: 1px solid black;
+    align-self: center;
+    display: flex;
+    margin: 0.7em 0;
+}
+
+.small-card img {
+    width: 30px;
+    height: 30px;
+    justify-self: initial;
+    align-self: center;
+    margin-left: 0.5em;
+}
+
+.small-card label {
+    justify-self: initial;
+    align-self: center;
+    margin: 0 0.5em;
+    font-weight: bold;
+}
