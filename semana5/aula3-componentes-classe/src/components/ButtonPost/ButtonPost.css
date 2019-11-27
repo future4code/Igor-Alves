@@ -1,0 +1,54 @@
+.button-post {
+    height: 15%;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.button-post img:nth-child(1) {
+    width: 25px;
+    height: 22px;
+    margin-left: 1em;
+    background-image: black;
+}
+
+.button-post img:last-of-type {
+    width: 25px;
+    height: 25px;
+    margin-left: 72%;
+}
+
+.button-post p {
+    margin-left: 2%;
+}
+
+.comment {
+    width: auto;
+    display: inline;
+    margin: 0.5em auto;
+}
+
+.comment input {
+    width: 20em;
+    height: 1.3rem;
+    margin-right: 0.5em;
+    text-indent: 0.3em;
+}
+
+.comment button {
+    width: auto;
+    height: 1.68rem;
+    color: #ffffff;
+    background-color: #000000;
+    border: none;
+}
+
+.comment button:hover {
+    background-color: #8d8d8d;
+}
+
+.comment button:active {
+    background-color: #000000;
+}

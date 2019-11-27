@@ -1,0 +1,9 @@
+.img-post {
+    height: 70%;
+    width: auto;
+}
+
+.img-post img {
+    width: 100%;
+    height: 100%;
+}
