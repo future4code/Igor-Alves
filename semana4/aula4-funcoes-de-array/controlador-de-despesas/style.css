@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+section {
+    border: 1px solid orange;
+    padding: 2% 1% 4% 2%;
+    width: 25%;
+    height: 13em;
+    margin: 2em 1em 0 1em;
+}
+
+section h1 {
+    margin: 0 0 0.7em 0;
+}
+
+section h3 {
+    margin: 0.7em 0;
+}
+
+section label {
+    margin: 0.7em 0;
+}
+
+section input {
+    margin: 0.7em 0;
+    width: 10em;
+}
+
+section select {
+    margin: 0.7em 0;
+    width: 5em;
+}
+
+section button {
+    margin: 0.7em 0;
+    padding: 0.2rem 0.4rem;
+}
+
+#vizualizar-despesas {
+    text-align: center;
+    border: none;
+    width: 40%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+#vizualizar-despesas p {
+    text-align: justify;
+    text-indent: 12%;
+    font-size: 13pt;
+    padding: 0.5em 0;
+}
+
+#vizualizar-despesas p:nth-of-type(1) {
+    border-top: 3px solid rgb(231, 231, 231);
+}
+
+#vizualizar-despesas p:nth-of-type(3n+3) {
+    border-bottom: 3px solid rgb(231, 231, 231);
+}
+
+#extrato p {
+    padding: 0.2em 0;
+
+}

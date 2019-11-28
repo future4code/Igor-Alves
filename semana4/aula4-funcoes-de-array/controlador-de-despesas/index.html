@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Semana 4 Aula 4</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+
+    <div class="container">
+
+    <section id="controle-despesas">
+        <h1>Controlador de Despesas</h1>
+        <h3>Cadastrar despesa</h3>
+        <label for="valor-cadastro">Valor </label>
+        <input type="number" id="valor-cadastro" min="1"><br>
+        <label for="tipo-cadastro">Tipo (Casa, Viagem, Rolês, Outros)</label>
+        <select id="tipo-cadastro">
+            <option>Casa</option>
+            <option>Viagem</option>
+            <option>Rolês</option>
+            <option>Outros</option>
+        </select><br>
+        <label for="descricao-cadastro">Descrição</label>
+        <input type="text" id="descricao-cadastro"><br>
+        <button onclick="salvarDespesa()">Cadastrar Despesa</button>
+    </section>
+
+    <section id="detalhe-despesas">
+        <h1>Despesas Detalhadas</h1>
+        <label for="tipo-detalhes">Tipo (Casa, Viagem, Rolês, Outros)</label>
+        <select id="tipo-detalhes">
+            <option>Casa</option>
+            <option>Viagem</option>
+            <option>Rolês</option>
+            <option>Outros</option>
+        </select><br>
+        <label for="valor-minimo">Valor Mínimo</label>
+        <input type="number" id="valor-minimo" min="1"><br>
+        <label for="valor-maximo">Valor Máximo</label>
+        <input type="number" id="valor-maximo" min="1"><br>
+        <button onclick="filtrarDespesa()">Filtrar</button>
+        <button onclick="mostrarDespesas()">Limpar Filtros</button>
+    </section>
+
+    <section>
+        <h1>Extrato</h1>
+        <div id="extrato">
+        </div>
+        <h3 id="total">Valor Total:</h3>
+    </section>
+
+    </div>
+
+    <section id="vizualizar-despesas">
+        <h1>Lista de Despesas</h1>
+        <div id="lista-despesas">
+        </div>
+        <div id="lista-extrato">
+        </div>
+    </section>
+
+</body>
+</html>
