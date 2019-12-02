@@ -1,0 +1,47 @@
+.main-container {
+  margin: 0 auto;
+  width: 60vh;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 53.5vh;
+  margin: 1em auto;
+  border: 1px solid black;
+  padding: 0.5em;
+}
+
+form button {
+  margin: 1em auto;
+  width: 20%;
+  padding: 0.5em;
+  color: #ffffff;
+  background-color: #000000;
+  border: none;
+}
+
+form label {
+  text-align: center;
+}
+
+
+form button:hover {
+  background-color: #8d8d8d;
+}
+
+form button:active {
+  background-color: #000000;
+}
+
+form input {
+  width: 25em;
+  border: none;
+  border-bottom: 1px solid black;
+  margin: 1em auto;
+  height: 1.5em;
+  text-indent: 0.5em;
+  outline: none;
+  text-align: center;
+}
+
