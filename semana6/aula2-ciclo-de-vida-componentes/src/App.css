@@ -1,0 +1,11 @@
+.App {
+  text-align: center;
+}
+
+.App input {
+  margin: 0 1em 1em 0;
+}
+
+.App label {
+  margin-right: 1em;
+}
