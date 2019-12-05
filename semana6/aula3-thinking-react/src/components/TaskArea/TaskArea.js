@@ -11,17 +11,17 @@ const TaskContainer = styled.div `
     padding: 1em 0;
 `
 
-const TaskItem = styled.li `
-    margin: 1em 0;
-    width: 50px;
-`
-
 function TaskArea(props) {
   return (
     <TaskContainer>
         {props.taskList.map(item => {
             return (
-                <Task name={item.name}/>
+                <Task 
+                verifyTask={props.verifyTask} 
+                complete={item.complete} 
+                name={item.name}
+                id={item.id}
+                />
             )
         })}
     </TaskContainer>

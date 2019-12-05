@@ -21,23 +21,38 @@ class TodoItContainer extends React.Component {
 
 
     addNewTask = (Task) => {
-        const newTask = {
-            id: Date.now(),
-            name: Task,
-            complete: false,
+        if(Task !== "") {
+            const newTask = {
+                id: Date.now(),
+                name: Task,
+                complete: false,
+            }
+            const copyTaskList = [...this.state.TaskList, newTask]
+            this.setState(
+                {TaskList: copyTaskList,}
+            );  
         }
-        const copyTaskList = [...this.state.TaskList, newTask]
-        this.setState(
-            {TaskList: copyTaskList,}
-        );
     }
 
 
+    // verifyTask = (postId) => {
+    //     const copyTaskList = this.state.TaskList.map(task => {
+    //         if (task.id === postId) {
+    //           const copyTask = { ...task };
+    //           copyTask.complete = !copyTask.complete;
+    //           return copyTask;
+    //         }
+    //         return task;
+    //       });
+    // }
+
+
     render() {
+        console.log(this.state.TaskList)
         return (
             <TodoContainer>
                 <FormCard addNewTask={this.addNewTask}/>
-                <TaskArea taskList={this.state.TaskList}/>
+                <TaskArea taskList={this.state.TaskList} verifyTask={this.verifyTask}/>
             </TodoContainer>
         ); 
     }
