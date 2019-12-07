@@ -10,7 +10,6 @@ class App extends React.Component {
 
     this.state = {
       inputTarefa: "",
-      completa: false,
       listaTarefas: [],
     }
   }
