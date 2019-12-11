@@ -107,7 +107,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <BotaoDaPagina onClick={this.mudarPágina}>{this.state.nomebotao}</BotaoDaPagina>
-        {this.state.primeiraPagina ? (<FormCadastro pegarNomeUsuario={this.pegarNomeUsuario} pegarEmailUsuario={this.pegarEmailUsuario} criarUsuario={this.criarUsuario}/>) : (<ListaUsuarios listaUsuarios={this.state.cadastrados} deletarUsuario={this.deletarUsuario}/>)}
+        {this.state.primeiraPagina ? 
+        (<FormCadastro pegarNomeUsuario={this.pegarNomeUsuario} pegarEmailUsuario={this.pegarEmailUsuario} criarUsuario={this.criarUsuario}/>) : (<ListaUsuarios listaUsuarios={this.state.cadastrados} deletarUsuario={this.deletarUsuario}/>)}
       </div>
     );
   }
