@@ -10,12 +10,25 @@ const ContainerItem = styled.div `
     align-items: center;
     width: 30vw;
     margin: 0 auto;
+    border-bottom: 1px dashed green;
+`
+
+const ContainerButton = styled.div `
+    display: flex;
+    justify-content: space-between;
 `
 
 const DeleteButton = styled.span `
     color: red;
+    margin-left: 1em;
 `
 
+const SeeMoreButton = styled.span `
+    color: green;
+`
+
+const PlaylistName = styled.p `
+`
 
 
 const baseURL = "https://us-central1-spotif4.cloudfunctions.net/api"
@@ -46,10 +59,12 @@ function PlaylistItem(props) {
 
     return (
         <ContainerItem>
-            <p>{props.playlist.name}</p>
-            <span onClick={() => {
-                props.onShowPlaylist(props.playlist.id)}}>Ver Mais</span> 
-            <DeleteButton onClick={handleOnClickDelete}>Remover</DeleteButton>
+            <PlaylistName>{props.playlist.name}</PlaylistName>
+            <ContainerButton>
+                <SeeMoreButton onClick={() => {
+                    props.onShowPlaylist(props.playlist.id, props.playlist.name)}}>Ver Mais</SeeMoreButton> 
+                <DeleteButton onClick={handleOnClickDelete}>Remover</DeleteButton>
+            </ContainerButton>
         </ContainerItem>
     );
 };
