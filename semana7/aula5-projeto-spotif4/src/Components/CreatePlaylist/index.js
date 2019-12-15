@@ -11,6 +11,7 @@ const NewPlaylistForm = styled.form `
     margin: 10vh auto;
     text-align: center;
     box-shadow: 0em 0em 0.2em  rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
 ` 
 
 const CreateButton = styled.button `
@@ -72,7 +73,7 @@ class CreatePlaylist extends React.Component {
     };
 
 
-    handleCreatePlaylist = async () => {
+    CreatePlaylist = async () => {
         const playlistName = this.state.newPlaylistName
         const endPoint = "/playlists/createPlaylist"
 
@@ -105,12 +106,11 @@ class CreatePlaylist extends React.Component {
 
 
     render() {
-        console.log(this.state.newPlaylistName)
         return (
             <NewPlaylistForm action='#'>
                 <Title>Nova playlist</Title>
                 <StyledLabel>Nome da playlist: </StyledLabel><StyledInput onChange={this.handleNameChange} value={this.state.newPlaylistName}/><br/>
-                <CreateButton onClick={this.handleCreatePlaylist}>Criar</CreateButton>
+                <CreateButton onClick={this.CreatePlaylist}>Criar</CreateButton>
             </NewPlaylistForm>
         );
     }

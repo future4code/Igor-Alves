@@ -22,7 +22,7 @@ const ChangePageButton = styled.button `
   color: white;
   border: none;
   box-shadow: 0em 0em 0.4em  rgba(0, 0, 0, 0.6);
-  border-radius: 10px;
+  border-radius: 15px;
   outline: none;
   padding: 0.6em;
   font-family: Verdana;
