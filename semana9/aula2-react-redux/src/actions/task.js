@@ -2,7 +2,9 @@ export const addTaskAction = (newTask) => {
     return {
         type: "ADD_TASK",
         payload: {
-            Task: Task
+            task: action.payload.task, 
+            checked: false, 
+            id: new Date.getTime()
         }
     }
 }
@@ -18,10 +20,10 @@ export const removeTaskAction = (id) => {
 }
 
 
-export const MarkTask = () => {
+export const MarkTask = (id) => {
     return {
         type: "MARK_TASK",
-        payload: {}
+        payload: {id}
     }
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import CircleImg from '../../Resources/circle-icon.png';
+import CircleImg from '../../resources/circle-icon.png';
+import { connect } from "react-redux";
 
 
 const ContainerItem = styled.div `
@@ -31,6 +32,7 @@ function TaskItem(props) {
     );
 }
   
+
+
   
-  
-export default TaskItem;
+export default connect(null, mapDispatchToProps)(TaskItem);

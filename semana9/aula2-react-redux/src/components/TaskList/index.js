@@ -29,12 +29,12 @@ const TaskInput = styled.input `
 
 
 
-function TaskList() {
+function TaskList(props) {
     return (
       <ContainerList>
-          <TaskInput placeholder='O que tem que ser feito?'/>
-          {props.TaskList.map( task => (
-            <TaskItem name={task.task} status={task.checked} id={task.id}/>
+          <TaskInput placeholder='O que tem que ser feito?'/><button onClick={(event) => props.addTask(event.target.value)}>Adicionar</button>
+          {props.taskList.map( task => (
+            <TaskItem name={task.taskName} status={task.checked} key={task.id}/>
           ))}
           <TaskMenu/>
       </ContainerList>
@@ -44,9 +44,16 @@ function TaskList() {
 
 const mapStateToProps = state => {
   return {
-    TaskList: state.tasks.TaskList
+    taskList: state.task.taskList
   };
 };
 
 
-export default connect(mapStateToProps)(TaskList);
+const mapDispatchToProps = dispatch => {
+  return {
+    addTask: task => dispatch(addTaskAction(task))
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskList);
