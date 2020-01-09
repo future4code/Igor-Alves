@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import TaskItem from '../TaskItem/index';
 import TaskMenu from '../TaskMenu/index';
 import { connect } from 'react-redux';
-import { addTaskAction } from '../../actions/task'
 import { getTasks } from '../../actions/task'
+import { createTask } from '../../actions/task';
 
 
 
@@ -59,9 +59,9 @@ class TaskList extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   this.props.getAllTasks()
-  // }
+  componentDidMount() {
+    this.props.getAllTasks()
+  }
 
   onChangeTask = event => {
     this.setState({ taskValue: event.target.value });
@@ -69,7 +69,7 @@ class TaskList extends React.Component {
 
   onCreateTask = () => {
     this.setState({taskValue: ""})
-    this.props.addTask(this.state.taskValue)
+    this.props.createTask(this.state.taskValue)
   }
 
   render() {
@@ -78,7 +78,7 @@ class TaskList extends React.Component {
           <TaskInput onChange={this.onChangeTask} value={this.state.taskValue} placeholder='O que tem que ser feito?'/>
           <TaskAddButton onClick={this.onCreateTask}>Adicionar</TaskAddButton>
           {this.props.taskList.map( task => (
-            <TaskItem name={task.task} checked={task.checked} key={task.id} id={task.id}/>
+            <TaskItem name={task.text} checked={task.done} key={task.id} id={task.id}/>
           ))}
           <TaskMenu/>
       </ContainerList>
@@ -90,15 +90,15 @@ class TaskList extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    taskList: state.task.taskList,
+    taskList: state.tasks.taskList,
   };
 };
 
 
 const mapDispatchToProps = dispatch => {
   return {
-    addTask: task => dispatch(addTaskAction(task)),
-    // getAllTasks: () => dispatch(getTasks()),
+    getAllTasks: () => dispatch(getTasks()),
+    createTask: (task) => dispatch(createTask(task)),
   };
 };
 

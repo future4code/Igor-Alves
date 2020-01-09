@@ -1,14 +1,13 @@
 import axios from "axios"
 
 
-export const addTaskAction = (task) => {
-    return {
-        type: "ADD_TASK",
-        payload: {
-            task, 
-        }
-    }
+
+export const createTask = (text) => async (dispatch, getState) => {
+    await axios.post("https://us-central1-missao-newton.cloudfunctions.net/reduxTodo/igor/todos", { text: text });
+
+    dispatch(getTasks())
 }
+
 
 export const setTasksAction = (tasks) => ({
     type: "SET_TASKS",
@@ -17,63 +16,41 @@ export const setTasksAction = (tasks) => ({
     }
 })
 
+
 export const getTasks = () => async (dispatch, getState) => {
-    const response = await axios.get("https://us-central1-missao-newton.cloudfunctions.net/reduxTodo/igor/todos")
-    dispatch(setTasksAction(response.data.tasks));
+    const response = await axios.get("https://us-central1-missao-newton.cloudfunctions.net/reduxTodo/igor/todos");
+
+    dispatch(setTasksAction(response.data.todos));
 }
 
 
-export const markTaskAction = (taskId) => {
-    return {
-        type: "MARK_TASK",
-        payload: {
-            taskId,
-        }
-    }
+export const markTask = (taskId) => async (dispatch, getState) => {
+    await axios.put(`https://us-central1-missao-newton.cloudfunctions.net/reduxTodo/igor/todos/${taskId}/toggle`);
+
+    dispatch(getTasks())
 }
 
 
-export const removeTaskAction = (id) => {
-    return {
-        type: "REMOVE_TASK",
-        payload: {
-            id: id
-        }
-    }
+export const removeTask = (taskId) => async (dispatch, getState) => {
+    await axios.delete(`https://us-central1-missao-newton.cloudfunctions.net/reduxTodo/igor/todos/${taskId}`);
+
+    dispatch(getTasks())
 }
 
 
-export const filterCheckedTasks = () => {
-    return {
-        type: "FILTER_CHECKED_TASKS",
-        payload: {}
-    }
-}
-  
+export const removeAllTask = () => async (dispatch, getState) => {
+    await axios.delete(`https://us-central1-missao-newton.cloudfunctions.net/reduxTodo/igor/todos/delete-done`);
 
-export const filterUncheckedTasks = () => {
-    return {
-        type: "FILTER_UNCHECKED_TASKS",
-        payload: {}
-    }
+    dispatch(getTasks())
 }
-  
 
-export const MarkAllTasks = () => {
-    return {
-        type: "MARK_ALL_TASKS",
-        payload: {
-            checked: true
-        }
-    }
-}
-  
 
-export const removeAllTasks = () => {
-    return {
-        type: "REMOVE_ALL_TASKS",
-        payload: {
-            TaskList: []
-        }
+export const markAllTasks = () => async (dispatch, getState) => {
+    const response = await axios.get("https://us-central1-missao-newton.cloudfunctions.net/reduxTodo/igor/todos");
+    
+    for (let id in response.data.todos) {
+        await axios.put(`https://us-central1-missao-newton.cloudfunctions.net/reduxTodo/igor/todos/${response.data.todos[id].id}/toggle`);
     }
+    
+    dispatch(getTasks())
 }
