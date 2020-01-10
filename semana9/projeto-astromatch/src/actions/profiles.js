@@ -19,3 +19,25 @@ export const getProfileToSwipe = () => async (dispatch) => {
 	
 	dispatch(setProfileToSwipe(response.data.profile));
 }
+
+
+export const chooseProfile = (id, choice) => async (dispatch) => {
+	await axios.post('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/igor/choose-person', {id,choice})
+
+	dispatch(getProfileToSwipe())
+}
+
+
+export const setMatches = (matches) => ({
+	type: 'SET_MATCHES',
+	payload: {
+		matches,
+	}
+})
+
+
+export const getMatches = () => async (dispatch) => {
+	const response = await axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/igor/matches')
+
+	dispatch(setMatches(response.data.matches))
+}

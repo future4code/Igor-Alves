@@ -8,7 +8,8 @@ import {mdiAccountMultipleCheck} from '@mdi/js'
 import {swipeLeft, swipeRight} from '../../components/UserSwipeCard/styled'
 import {updateCurrentPage} from '../../actions/route'
 import {Loader} from '../../components/Loader'
-import {getProfileToSwipe} from '../../actions/profiles'
+import {getProfileToSwipe, chooseProfile} from '../../actions/profiles'
+
 
 export class SwipeScreen extends Component {
 	constructor(props) {
@@ -86,6 +87,7 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		goToMatchScreen: () => dispatch(updateCurrentPage('MatchScreen')),
 		getProfileToSwipe: () => dispatch(getProfileToSwipe()),
+		chooseProfile: (id, choice) => dispatch(chooseProfile(id, choice)),
 	}
 }
 
