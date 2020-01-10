@@ -1,6 +1,7 @@
 const initialState = {
   currentProfile: null,
   matches: [],
+  selectedProfile: {},
 }
 
 const profiles = (state = initialState, action) => {
@@ -11,6 +12,9 @@ const profiles = (state = initialState, action) => {
     case 'SET_MATCHES':
       const allmatches = action.payload.matches;
       return {...state, matches: allmatches};
+    case 'SET_SELECTED_PROFILE':
+      const profile = action.payload.SelectedProfile;
+      return {...state, selectedProfile: profile}
     default:
       return state
   }

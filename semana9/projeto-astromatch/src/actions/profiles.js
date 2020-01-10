@@ -41,3 +41,11 @@ export const getMatches = () => async (dispatch) => {
 
 	dispatch(setMatches(response.data.matches))
 }
+
+
+export const setSelectedProfile =  (SelectedProfile) => ({
+	type: 'SET_SELECTED_PROFILE',
+	payload: {
+		SelectedProfile,
+	}
+})
