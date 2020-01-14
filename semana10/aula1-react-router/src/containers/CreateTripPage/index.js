@@ -4,7 +4,7 @@ import { push } from "connected-react-router";
 import styled from "styled-components";
 
 
-class CreateTravelPage extends Component {
+class CreateTripPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,10 +14,10 @@ class CreateTravelPage extends Component {
   render() {
     return (
       <div>
-          <p>CreateTravelPage</p>
+          <p>CreateTripPage</p>
       </div>
     );
   }
 }
 
-export default CreateTravelPage;
+export default CreateTripPage;

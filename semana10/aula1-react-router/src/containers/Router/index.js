@@ -6,16 +6,16 @@ import ListTripPage from "../ListTripPage";
 import TripDetailsPage from "../TripDetailsPage";
 import HomePage from "../HomePage";
 import RegisterPage from "../RegisterPage";
-import CreateTravelPage from "../CreateTravelPage";
+import CreateTravelPage from "../CreateTripPage";
 
 
-const routes = {
+export const routes = {
   root: "/",
   register: "/application-form",
   login: "/login",
-  createTravel: "/trips/create",
-  allTravels: "/trips/list",
-  travelDetails: "/trips/details",
+  createTrip: "/trips/create",
+  allTrips: "/trips/list",
+  tripDetails: "/trips/details",
 };
 
 
@@ -24,12 +24,12 @@ function Router(props) {
   return (
     <ConnectedRouter history={props.history}>
       <Switch>
-        <Route path={routes.root} component={HomePage} />
-        <Route path={routes.register} component={RegisterPage} />
-        <Route path={routes.login} component={LoginPage} />
-        <Route path={routes.createTravel} component={CreateTravelPage} />
-        <Route path={routes.allTravels} component={ListTripPage} />
-        <Route path={routes.travelDetails} component={TripDetailsPage} />
+        <Route path={routes.root} component={HomePage} exact/>
+        <Route path={routes.register} component={RegisterPage} exact/>
+        <Route path={routes.login} component={LoginPage} exact/>
+        <Route path={routes.createTrip} component={CreateTravelPage} exact/>
+        <Route path={routes.allTrips} component={ListTripPage} exact/>
+        <Route path={routes.tripDetails} component={TripDetailsPage} exact/>
       </Switch>
     </ConnectedRouter>
   );

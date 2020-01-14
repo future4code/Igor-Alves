@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
-import styled from "styled-components";
-
+import { routes } from "../Router/index"
+import { getAllTrips } from "../../actions/trips"
 
 class ListTripPage extends Component {
   constructor(props) {
@@ -11,13 +11,36 @@ class ListTripPage extends Component {
     };
   }
 
+  componentDidMount(){
+    this.props.getAllTrips()
+  }
+
   render() {
     return (
-      <div>
-          <p>ListTripPage</p>
-      </div>
+      	<div>
+          {this.props.allTrips.map((trip) => (
+            <div>
+              <li>{trip.name}</li>
+              <li>{trip.date}</li>
+              <li>{trip.durationInDays}</li>
+              <li>{trip.description}</li>
+              <li>{trip.planet}</li>
+            </div>
+          ))}
+          <p onClick={this.props.changePage}>ListTripPage</p>
+      	</div>
     );
   }
 }
 
-export default ListTripPage;
+const mapStateToProps = state => ({
+  allTrips: state.trips.allTrips
+});
+
+
+const mapDispatchToProps = dispatch => ({
+  changePage: () => dispatch(push(routes.root)),
+  getAllTrips: () => dispatch(getAllTrips()),
+})
+
+export default  connect(mapStateToProps, mapDispatchToProps)(ListTripPage);

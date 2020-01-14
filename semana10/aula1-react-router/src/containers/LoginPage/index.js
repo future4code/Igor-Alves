@@ -4,6 +4,7 @@ import { push } from "connected-react-router";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import styled from "styled-components";
+import { routes } from "../Router";
 
 const LoginWrapper = styled.form`
   width: 100%;
@@ -48,14 +49,16 @@ class LoginPage extends Component {
           label="Password"
           value={password}
         />
-        <Button>Login</Button>
+        <Button onClick={this.props.goToListTripPage}>Login</Button>
       </LoginWrapper>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  changePage: () => dispatch(push('/rota')),
-})
+function mapDispatchToProps(dispatch){
+  return{
+    goToListTripPage: () => dispatch(push(routes.allTrips))
+  }
+}
 
 export default connect(null, mapDispatchToProps)(LoginPage);
