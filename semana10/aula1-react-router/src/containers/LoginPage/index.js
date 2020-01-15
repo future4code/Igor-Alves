@@ -5,6 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import styled from "styled-components";
 import { routes } from "../Router";
+import { createMuiTheme } from "../../style/theme"
 
 const LoginWrapper = styled.form`
   width: 100%;
@@ -49,7 +50,7 @@ class LoginPage extends Component {
           label="Password"
           value={password}
         />
-        <Button onClick={this.props.goToListTripPage}>Login</Button>
+        <Button color="primary" onClick={this.props.goToListTripPage}>Login</Button>
       </LoginWrapper>
     );
   }
