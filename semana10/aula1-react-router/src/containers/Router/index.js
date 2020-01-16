@@ -7,6 +7,8 @@ import TripDetailsPage from "../TripDetailsPage";
 import HomePage from "../HomePage";
 import RegisterPage from "../RegisterPage";
 import CreateTravelPage from "../CreateTripPage";
+import AdminPanel from "../AdminPanel/index";
+
 
 
 export const routes = {
@@ -16,6 +18,7 @@ export const routes = {
   createTrip: "/trips/create",
   allTrips: "/trips/list",
   tripDetails: "/trips/details",
+  adminPanel: "/admin/panel"
 };
 
 
@@ -30,9 +33,12 @@ function Router(props) {
         <Route path={routes.createTrip} component={CreateTravelPage} exact/>
         <Route path={routes.allTrips} component={ListTripPage} exact/>
         <Route path={routes.tripDetails} component={TripDetailsPage} exact/>
+        <Route path={routes.adminPanel} component={AdminPanel} exact/>
       </Switch>
     </ConnectedRouter>
   );
 }
+
+
 
 export default Router;

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router";
-import { Header, Logo, Banner, ContainerHome } from "../../style/homePage";
+import { Header, Logo, Banner, MainContainer } from "../../style/global";
 import LogoMarca from "../../resources/Iconefuturex.png";
 import LogoTipo from "../../resources/logotipofuturex.png";
 import BannerImg from "../../resources/banner.jpg";
@@ -20,24 +20,27 @@ class HomePage extends Component {
 
   render() {
     return (
-      <ContainerHome>
+      <MainContainer>
           <Header>
-            <Logo src={LogoMarca}></Logo>
-            <Logo src={LogoTipo}></Logo>
+            <Logo src={LogoMarca} onClick={this.props.goToHomePage}/>
+            <Logo src={LogoTipo} onClick={this.props.goToHomePage}/>
           </Header>
           <Banner src={BannerImg}/>
           <RedirectCard onClick={this.props.goToLoginPage} title="Entrar" img={UserIcon}/>
           <RedirectCard onClick={this.props.goToRegisterPage} title="Inscreva-se" img={RocketIcon}/>
-      </ContainerHome>
+      </MainContainer>
     );
   }
 }
 
-function mapDispatchToProps(dispatch){
-    return{
-      goToLoginPage: () => dispatch(push(routes.login)),
-      goToRegisterPage: () => dispatch(push(routes.register))
-    }
-}
+
+
+const mapDispatchToProps = dispatch => ({
+  goToHomePage: () => dispatch(push(routes.root)),
+  goToLoginPage: () => dispatch(push(routes.login)),
+  goToRegisterPage: () => dispatch(push(routes.register))
+})
+
+
 
 export default connect(null, mapDispatchToProps)(HomePage);

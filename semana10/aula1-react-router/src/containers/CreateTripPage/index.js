@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
+import { Header, Logo, Banner, MainContainer } from "../../style/global";
+import LogoMarca from "../../resources/Iconefuturex.png";
+import LogoTipo from "../../resources/logotipofuturex.png";
+import BannerImg from "../../resources/banner.jpg";
+import { routes } from "../Router";
 
 
 const CreateTripForm = [
@@ -46,6 +51,13 @@ class CreateTripPage extends Component {
     };
   }
 
+  componentDidMount() {
+    const token = window.localStorage.getItem("token")
+    if (token === null) {
+      this.props.goToLoginPage()
+    }
+  }
+
   handleInputChange = event => {
     const { name, value } = event.target;
 
@@ -65,6 +77,12 @@ class CreateTripPage extends Component {
 
   render() {
     return (
+      <MainContainer>
+      <Header>
+        <Logo src={LogoMarca} onClick={this.props.goToHomePage}/>
+        <Logo src={LogoTipo} onClick={this.props.goToHomePage}/>
+      </Header>
+      <Banner src={BannerImg}/>
       <div>
         {CreateTripForm.map( input => (
           <div key={input.name}>
@@ -93,8 +111,16 @@ class CreateTripPage extends Component {
         </select>
         <button onClick={this.handleOnSubmit}>Enviar</button>
       </div>
+    </MainContainer>
     );
   }
 }
 
-export default CreateTripPage;
+
+
+const mapDispatchToProps = dispatch => ({
+  goToHomePage: () => dispatch(push(routes.root)),
+})
+
+
+export default connect(null, mapDispatchToProps)(CreateTripPage);
