@@ -10,7 +10,7 @@ import LogoTipo from "../../resources/logotipofuturex.png";
 import BannerImg from "../../resources/banner.jpg";
 import LoginCard from "../../components/LoginCard"
 import { LoginWrapper } from "../../style/loginPage";
-import { autenticateLogin } from "../../actions/login"
+import { autenticateLogin } from "../../actions/user"
 
 
 class LoginPage extends Component {
@@ -28,7 +28,7 @@ class LoginPage extends Component {
     });
   };
 
-  sendLoginInformation = () => {
+  sendLoginData = () => {
     const { email, password } = this.state;
     this.props.autenticateLogin(email, password)
   }
@@ -58,7 +58,7 @@ class LoginPage extends Component {
               label="Password"
               value={password}
             />
-            <Button color="primary" size="large" onClick={this.sendLoginInformation}>Login</Button>
+            <Button color="primary" size="large" onClick={this.sendLoginData}>Login</Button>
           </LoginWrapper>
         </LoginCard>
       </MainContainer>

@@ -5,7 +5,7 @@ import LoginPage from "../LoginPage";
 import ListTripPage from "../ListTripPage";
 import TripDetailsPage from "../TripDetailsPage";
 import HomePage from "../HomePage";
-import RegisterPage from "../RegisterPage";
+import ApplicationPage from "../ApplicationPage";
 import CreateTravelPage from "../CreateTripPage";
 import AdminPanel from "../AdminPanel/index";
 
@@ -13,7 +13,7 @@ import AdminPanel from "../AdminPanel/index";
 
 export const routes = {
   root: "/",
-  register: "/application-form",
+  application: "/application-form",
   login: "/login",
   createTrip: "/trips/create",
   allTrips: "/trips/list",
@@ -28,7 +28,7 @@ function Router(props) {
     <ConnectedRouter history={props.history}>
       <Switch>
         <Route path={routes.root} component={HomePage} exact/>
-        <Route path={routes.register} component={RegisterPage} exact/>
+        <Route path={routes.application} component={ApplicationPage} exact/>
         <Route path={routes.login} component={LoginPage} exact/>
         <Route path={routes.createTrip} component={CreateTravelPage} exact/>
         <Route path={routes.allTrips} component={ListTripPage} exact/>

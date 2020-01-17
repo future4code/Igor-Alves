@@ -27,7 +27,7 @@ class HomePage extends Component {
           </Header>
           <Banner src={BannerImg}/>
           <RedirectCard onClick={this.props.goToLoginPage} title="Entrar" img={UserIcon}/>
-          <RedirectCard onClick={this.props.goToRegisterPage} title="Inscreva-se" img={RocketIcon}/>
+          <RedirectCard onClick={this.props.goToApplicationPage} title="Inscreva-se" img={RocketIcon}/>
       </MainContainer>
     );
   }
@@ -38,7 +38,7 @@ class HomePage extends Component {
 const mapDispatchToProps = dispatch => ({
   goToHomePage: () => dispatch(push(routes.root)),
   goToLoginPage: () => dispatch(push(routes.login)),
-  goToRegisterPage: () => dispatch(push(routes.register))
+  goToApplicationPage: () => dispatch(push(routes.application))
 })
 
 

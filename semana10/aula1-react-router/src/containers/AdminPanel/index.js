@@ -39,7 +39,7 @@ function mapDispatchToProps(dispatch){
     return{
       goToHomePage: () => dispatch(push(routes.root)),
       goToLoginPage: () => dispatch(push(routes.login)),
-      goToRegisterPage: () => dispatch(push(routes.register))
+      goToApplicationPage: () => dispatch(push(routes.application))
     }
 }
 

@@ -7,7 +7,7 @@ import { Header, Logo, Banner, MainContainer } from "../../style/global";
 import LogoMarca from "../../resources/Iconefuturex.png";
 import LogoTipo from "../../resources/logotipofuturex.png";
 import BannerImg from "../../resources/banner.jpg";
-
+import { setSelectedTripId } from "../../actions/trips"
 
 
 class ListTripPage extends Component {
@@ -26,6 +26,11 @@ class ListTripPage extends Component {
     this.props.getAllTrips()
   }
 
+  handleOnClickTrip = (tripId) => {
+    this.props.setSelectedTripId(tripId)
+    this.props.goToTripDetailsPage()
+  }
+
   render() {
     return (
       <MainContainer>
@@ -36,12 +41,13 @@ class ListTripPage extends Component {
         <Banner src={BannerImg}/>
         <div>
           {this.props.allTrips.map((trip) => (
-            <div>
-              <li>{trip.name}</li>
-              <li>{trip.date}</li>
-              <li>{trip.durationInDays}</li>
-              <li>{trip.description}</li>
-              <li>{trip.planet}</li>
+            <div onClick={() => this.handleOnClickTrip(trip.id)}>
+              <p>{trip.name}</p>
+              <p>{trip.date}</p>
+              <p>{trip.durationInDays}</p>
+              <p>{trip.description}</p>
+              <p>{trip.planet}</p>
+              <br/>
             </div>
           ))}
       	</div>
@@ -58,6 +64,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   goToHomePage: () => dispatch(push(routes.root)),
   getAllTrips: () => dispatch(getAllTrips()),
+  setSelectedTripId: (trip) => dispatch(setSelectedTripId(trip)),
+  goToTripDetailsPage: () => dispatch(push(routes.tripDetails))
 })
 
 

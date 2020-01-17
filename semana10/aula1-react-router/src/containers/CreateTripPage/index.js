@@ -6,11 +6,11 @@ import LogoMarca from "../../resources/Iconefuturex.png";
 import LogoTipo from "../../resources/logotipofuturex.png";
 import BannerImg from "../../resources/banner.jpg";
 import { routes } from "../Router";
-
+import { createTrip } from "../../actions/trips"
 
 const CreateTripForm = [
   {
-    name: "tripname",
+    name: "name",
     type: "text",
     label: "Nome",
     required: true,
@@ -18,7 +18,7 @@ const CreateTripForm = [
   },
   {
     name: "date",
-    type: "date",
+    type: "text",
     label: "Data",
     required: true,
     pattern: "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/[12][0-9]{3}$",
@@ -47,7 +47,6 @@ class CreateTripPage extends Component {
     super(props);
     this.state = {
       form: {},
-      selectPlanet: {},
     };
   }
 
@@ -69,13 +68,14 @@ class CreateTripPage extends Component {
     console.log(this.state.form);
   };
 
-  handleDropdownChange = event => {
-    const selectedValue = event.target.value;
-
-    this.setState({ selectPlanet: selectedValue})
+  sendFormData = () => {
+    const { form } = this.state;
+    this.props.createTrip(form)
   }
 
+
   render() {
+    console.log(this.state.form)
     return (
       <MainContainer>
       <Header>
@@ -84,32 +84,34 @@ class CreateTripPage extends Component {
       </Header>
       <Banner src={BannerImg}/>
       <div>
-        {CreateTripForm.map( input => (
-          <div key={input.name}>
-            <label htmlFor={input.name}>{input.label}: </label>
-            <input
-              id={input.name}
-              name={input.name}
-              type={input.type}
-              value={this.state.form[input.name] || ""}
-              required={input.required}
-              onChange={this.handleInputChange}
-              pattern={input.pattern}
-            />
-          </div>
-        ))}
-        <label for="planet">Planeta: </label>
-        <select name="planet" id="planet" onChange={this.handleDropdownChange} value={this.state.selectPlanet}>
-          <option>Mercúrio</option>
-          <option>Vênus</option>
-          <option>Terra</option>
-          <option>Marte</option>
-          <option>Júpiter</option>
-          <option>Saturno</option>
-          <option>Urano</option>
-          <option>Netuno</option>
-        </select>
-        <button onClick={this.handleOnSubmit}>Enviar</button>
+        <form onSubmit={this.handleOnSubmit}>
+          {CreateTripForm.map( input => (
+            <div key={input.name}>
+              <label htmlFor={input.name}>{input.label}: </label>
+              <input
+                id={input.name}
+                name={input.name}
+                type={input.type}
+                value={this.state.form[input.name] || ""}
+                required={input.required}
+                onChange={this.handleInputChange}
+                pattern={input.pattern}
+              />
+            </div>
+          ))}
+          <label for="planet">Planeta: </label>
+          <select name="planet" onChange={this.handleInputChange} value={this.state.form.planet}>
+            <option>Mercúrio</option>
+            <option>Vênus</option>
+            <option>Terra</option>
+            <option>Marte</option>
+            <option>Júpiter</option>
+            <option>Saturno</option>
+            <option>Urano</option>
+            <option>Netuno</option>
+          </select>
+          <button onClick={this.sendFormData}>Enviar</button>
+        </form>
       </div>
     </MainContainer>
     );
@@ -120,6 +122,7 @@ class CreateTripPage extends Component {
 
 const mapDispatchToProps = dispatch => ({
   goToHomePage: () => dispatch(push(routes.root)),
+  createTrip: (form) => dispatch(createTrip(form))
 })
 
 
