@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const ContainerTripDetailCard = styled.div`
     background-color: white;
-    width: 90%;
+    width: 60%;
     height: auto;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
