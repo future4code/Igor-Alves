@@ -6,7 +6,9 @@ import { Header, Logo, Banner, MainContainer } from "../../style/global";
 import LogoMarca from "../../resources/Iconefuturex.png";
 import LogoTipo from "../../resources/logotipofuturex.png";
 import BannerImg from "../../resources/banner.jpg";
-
+import RedirectCard from "../../components/RedirectCard";
+import PlusIcon from "../../resources/plusicon.png";
+import PlanetIcon from "../../resources/planeticon.png";
 
 class AdminPanel extends Component {
   constructor(props) {
@@ -30,6 +32,8 @@ class AdminPanel extends Component {
           <Logo src={LogoTipo} onClick={this.props.goToHomePage}/>
         </Header>
         <Banner src={BannerImg}/>
+        <RedirectCard onClick={this.props.goToCreateTripPage} title="Criar Viagem" img={PlusIcon}/>
+        <RedirectCard onClick={this.props.goToListTripPage} title="Ver Viagens" img={PlanetIcon}/>
       </MainContainer>
     );
   }
@@ -38,8 +42,8 @@ class AdminPanel extends Component {
 function mapDispatchToProps(dispatch){
     return{
       goToHomePage: () => dispatch(push(routes.root)),
-      goToLoginPage: () => dispatch(push(routes.login)),
-      goToApplicationPage: () => dispatch(push(routes.application))
+      goToCreateTripPage: () => dispatch(push(routes.createTrip)),
+      goToListTripPage: () => dispatch(push(routes.allTrips))
     }
 }
 

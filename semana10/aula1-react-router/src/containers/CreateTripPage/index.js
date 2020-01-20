@@ -6,21 +6,25 @@ import LogoMarca from "../../resources/Iconefuturex.png";
 import LogoTipo from "../../resources/logotipofuturex.png";
 import BannerImg from "../../resources/banner.jpg";
 import { routes } from "../Router";
-import { createTrip } from "../../actions/trips"
+import { createTrip } from "../../actions/trips";
+import FormCard from "../../components/FormCard";
+import TextField from "@material-ui/core/TextField";
+import Select from '@material-ui/core/Select';
+import Button from "@material-ui/core/Button";
+import { ContainerSelect, Title } from "../../style/forms";
+
 
 const CreateTripForm = [
   {
     name: "name",
     type: "text",
     label: "Nome",
-    required: true,
     pattern: "[a-zA-z]{5,}",
   },
   {
     name: "date",
     type: "text",
     label: "Data",
-    required: true,
     pattern: "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/[12][0-9]{3}$",
     min: `${new Date().getDate() + 1}/${new Date().getMonth()}/${new Date().getFullYear()} `,
   },
@@ -28,14 +32,12 @@ const CreateTripForm = [
     name: "description",
     type: "text",
     label: "Descrição",
-    required: true,
     pattern: "[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{30,}",      
   },
   {
     name: "durationInDays",
     type: "number",
     label: "Duração em dias",
-    required: true,
     pattern: "[0-9]+$",
     min: "50",
   },
@@ -75,7 +77,6 @@ class CreateTripPage extends Component {
 
 
   render() {
-    console.log(this.state.form)
     return (
       <MainContainer>
       <Header>
@@ -83,36 +84,40 @@ class CreateTripPage extends Component {
         <Logo src={LogoTipo} onClick={this.props.goToHomePage}/>
       </Header>
       <Banner src={BannerImg}/>
-      <div>
+      <FormCard>
+        <Title>Criar Nova Viagem</Title>
         <form onSubmit={this.handleOnSubmit}>
           {CreateTripForm.map( input => (
             <div key={input.name}>
-              <label htmlFor={input.name}>{input.label}: </label>
-              <input
+              <TextField
                 id={input.name}
                 name={input.name}
+                label={input.label}
                 type={input.type}
                 value={this.state.form[input.name] || ""}
-                required={input.required}
                 onChange={this.handleInputChange}
                 pattern={input.pattern}
+                required
+                fullWidth
               />
             </div>
           ))}
-          <label for="planet">Planeta: </label>
-          <select name="planet" onChange={this.handleInputChange} value={this.state.form.planet}>
-            <option>Mercúrio</option>
-            <option>Vênus</option>
-            <option>Terra</option>
-            <option>Marte</option>
-            <option>Júpiter</option>
-            <option>Saturno</option>
-            <option>Urano</option>
-            <option>Netuno</option>
-          </select>
-          <button onClick={this.sendFormData}>Enviar</button>
+          <ContainerSelect>
+            <Select name="planet" onChange={this.handleInputChange} value={this.state.form.planet} fullWidth native required>
+            <option>Planetas*</option>
+            <option value="Mercúrio">Mercúrio</option>
+            <option value="Vênus">Vênus</option>
+            <option value="Terra">Terra</option>
+            <option value="Marte">Marte</option>
+            <option value="Júpiter">Júpiter</option>
+            <option value="Saturno">Saturno</option>
+            <option value="Urano">Urano</option>
+            <option value="Netuno">Netuno</option>
+          </Select>
+          </ContainerSelect>
+          <Button fullWidth color="primary" size="large" onClick={this.sendFormData}>Enviar</Button>
         </form>
-      </div>
+      </FormCard>
     </MainContainer>
     );
   }

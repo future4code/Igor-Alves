@@ -7,14 +7,15 @@ import LogoTipo from "../../resources/logotipofuturex.png";
 import BannerImg from "../../resources/banner.jpg";
 import { routes } from "../Router";
 import FormCard from "../../components/FormCard";
-import { Title } from "../../style/registerPage";
+import { Title, ContainerSelect, ContainerInput } from "../../style/forms";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { getAllTrips } from "../../actions/trips"
 import { applicateUser } from "../../actions/user"
+import Select from '@material-ui/core/Select';
 
 
-const registerForm = [
+const appicationForm = [
   {
     name: "name",
     type: "text",
@@ -47,7 +48,7 @@ const registerForm = [
 ]
 
 
-class RegisterPage extends Component {
+class ApplicationPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -85,24 +86,24 @@ class RegisterPage extends Component {
         <FormCard>
           <Title>Inscreva-se</Title>
             <form onSubmit={this.handleOnSubmit}>
-              {registerForm.map( input => (
-                <div key={input.name}>
+              {appicationForm.map( input => (
+                <ContainerInput key={input.name}>
                   <TextField
                     id={input.name}
                     name={input.name}
                     type={input.type}
                     label={input.label}
                     value={this.state.form[input.name] || ""}
-                    required={input.required}
                     onChange={this.handleInputChange}
                     pattern={input.pattern}
                     required
+                    fullWidth
                   />
-                </div>
+                </ContainerInput>
               ))}
-              <div>
-                <select name="country" label="Países" onChange={this.handleInputChange} value={this.state.form.country} required>
-                <option selected>Países</option>
+              <ContainerSelect>
+                <Select name="country" onChange={this.handleInputChange} value={this.state.form.country} autoWidth native required>
+                <option>Países*</option>
                 <option value="Brasil">Brasil</option>
                 <option value="Afeganistão">Afeganistão</option>
                 <option value="África do Sul">África do Sul</option>
@@ -353,16 +354,17 @@ class RegisterPage extends Component {
                 <option value="Wallis e Futuna">Wallis e Futuna</option>
                 <option value="Zimbabwe">Zimbabwe</option>
                 <option value="Zâmbia">Zâmbia</option>
-              </select>
-              </div>
-              <div>
-                <select name="tripId" onChange={this.handleInputChange} value={this.state.form.tripId} required>
+              </Select>
+              </ContainerSelect>
+              <ContainerSelect>
+                <Select name="tripId" onChange={this.handleInputChange} value={this.state.form.tripId} autoWidth native required>
+                  <option>Vigens*</option>
                   {this.props.allTrips.map( trip => (
                     <option value={trip.id}>{trip.name} - {trip.planet}</option>
                   ))}
-                </select>
-              </div>
-              <Button color="primary" size="large" onClick={this.sendFormData}>Enviar</Button>
+                </Select>
+              </ContainerSelect>
+              <Button fullWidth color="primary" size="large" onClick={this.sendFormData}>Enviar</Button>
             </form>
         </FormCard>
       </MainContainer>
@@ -383,4 +385,4 @@ const mapDispatchToProps = dispatch => ({
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ApplicationPage);

@@ -8,7 +8,8 @@ import LogoMarca from "../../resources/Iconefuturex.png";
 import LogoTipo from "../../resources/logotipofuturex.png";
 import BannerImg from "../../resources/banner.jpg";
 import { setSelectedTripId } from "../../actions/trips"
-
+import { GridAllTrips } from "../../style/listTripPage"
+import ContainerTripCard from "../../components/TripCard/index"
 
 class ListTripPage extends Component {
   constructor(props) {
@@ -39,18 +40,27 @@ class ListTripPage extends Component {
           <Logo src={LogoTipo} onClick={this.props.goToHomePage}/>
         </Header>
         <Banner src={BannerImg}/>
-        <div>
+        <GridAllTrips>
           {this.props.allTrips.map((trip) => (
-            <div onClick={() => this.handleOnClickTrip(trip.id)}>
-              <p>{trip.name}</p>
-              <p>{trip.date}</p>
-              <p>{trip.durationInDays}</p>
-              <p>{trip.description}</p>
-              <p>{trip.planet}</p>
-              <br/>
-            </div>
+            <ContainerTripCard onClick={() => this.handleOnClickTrip(trip.id)}>
+              <div>
+                <span>Nome: </span><span>{trip.name}</span>
+              </div>
+              <div>
+                <span>Data: </span><span>{trip.date}</span>
+              </div>
+              <div>
+                <span>Duração: </span><span>{trip.durationInDays} dias</span>
+              </div>
+              <div>
+                <span>Planeta: </span><span>{trip.planet}</span>
+              </div>
+              <div>
+                <span>Descrição: </span><span>{trip.description}</span>
+              </div>
+            </ContainerTripCard>
           ))}
-      	</div>
+      	</GridAllTrips>
       </MainContainer>
     );
   }
