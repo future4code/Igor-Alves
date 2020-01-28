@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot LoginPage 1`] = `
+<div>
+  <div
+    className="sc-AykKE dYwhLR"
+  >
+    <header
+      className="sc-AykKC dRUEqp"
+    >
+      <img
+        alt="Logo 4eddit"
+        className="sc-AykKD eSgZQA"
+        src="logoheader.jpg"
+      />
+      <button
+        className="sc-fzXfMz hWgpqs"
+      >
+        Cadastre-se
+      </button>
+    </header>
+  </div>
+  <form
+    className="sc-fzXfNL dItTxs"
+  >
+    <div
+      className="sc-fzXfNO eGYQTF"
+    >
+      <label>
+        E-mail 
+      </label>
+      <input
+        className="sc-fzXfNM zkwOK"
+        name="email"
+        onChange={[Function]}
+        type="email"
+        value=""
+      />
+    </div>
+    <div
+      className="sc-fzXfNO eGYQTF"
+    >
+      <label>
+        Senha
+      </label>
+      <input
+        className="sc-fzXfNM zkwOK"
+        name="password"
+        onChange={[Function]}
+        type="password"
+        value=""
+      />
+    </div>
+    <button
+      className="sc-fzXfNN cRawYd"
+      onClick={[Function]}
+      type="submit"
+    >
+      Login
+    </button>
+  </form>
+  <footer
+    className="sc-fzXfNK codHpx"
+  >
+    4eddit powered by future4
+  </footer>
+</div>
+`;
