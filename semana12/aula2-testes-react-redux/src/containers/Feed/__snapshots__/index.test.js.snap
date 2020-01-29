@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot Feed 1`] = `
+<div>
+  <div
+    className="sc-fzXfLQ fjdKfH"
+  >
+    <header
+      className="sc-fzXfLO fcCgKf"
+    >
+      <img
+        alt="Logo 4eddit"
+        className="sc-fzXfLP hqlBdm"
+        onClick={[Function]}
+        src="logoheader.jpg"
+      />
+      <button
+        className="sc-fzXfLS iitJZY"
+        onClick={[Function]}
+      >
+        Logout
+      </button>
+    </header>
+  </div>
+  <div
+    className="sc-fzXfNO hNlCzE"
+  >
+    <div
+      className="sc-fzXfNJ cTBZIq"
+    >
+      <form
+        className="sc-fzXfNM cqhuGD"
+        onSubmit={[Function]}
+      >
+        <div
+          className="sc-fzXfNN dCHeYT"
+        >
+          <label>
+            Título
+            :
+          </label>
+          <input
+            className="sc-fzXfNK eEuYFg"
+            label="Título"
+            name="title"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="sc-fzXfNN dCHeYT"
+        >
+          <label>
+            Escreva seu post
+            :
+          </label>
+          <input
+            className="sc-fzXfNK eEuYFg"
+            label="Escreva seu post"
+            name="text"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+        <button
+          className="sc-fzXfNL jpnbgE"
+          onClick={[Function]}
+          type="submit"
+        >
+          Postar
+        </button>
+      </form>
+    </div>
+    <div
+      className="sc-fzXfNj ehcZmx"
+    >
+      <img
+        alt="Pug Loader"
+        className="sc-fzXfNk iNDCos"
+        src="loading.gif"
+      />
+      <p
+        className="sc-fzXfNl bUDQtz"
+      >
+        Carregando...
+      </p>
+    </div>
+  </div>
+</div>
+`;

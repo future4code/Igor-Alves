@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot RegisterPage 1`] = `
+<div>
+  <div
+    className="sc-AykKE dYwhLR"
+  >
+    <header
+      className="sc-AykKC dRUEqp"
+    >
+      <img
+        alt="Logo 4eddit"
+        className="sc-AykKD eSgZQA"
+        src="logoheader.jpg"
+      />
+    </header>
+  </div>
+  <form
+    className="sc-fzXfNK eJsMNj"
+  >
+    <h2
+      className="sc-fzXfNL gnyjdZ"
+    >
+      Cadastro
+    </h2>
+    <div
+      className="sc-fzXfNO eGYQTF"
+    >
+      <label>
+        Nome de Usuário
+      </label>
+      <input
+        className="sc-fzXfNM zkwOK"
+        name="username"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="sc-fzXfNO eGYQTF"
+    >
+      <label>
+        E-mail
+      </label>
+      <input
+        className="sc-fzXfNM zkwOK"
+        name="email"
+        onChange={[Function]}
+        type="email"
+        value=""
+      />
+    </div>
+    <div
+      className="sc-fzXfNO eGYQTF"
+    >
+      <label>
+        Senha
+      </label>
+      <input
+        className="sc-fzXfNM zkwOK"
+        name="password"
+        onChange={[Function]}
+        type="password"
+        value=""
+      />
+    </div>
+    <button
+      className="sc-fzXfNN caCLLX"
+      color="primary"
+      onClick={[Function]}
+      size="large"
+      type="submit"
+    >
+      Cadastrar
+    </button>
+  </form>
+</div>
+`;
