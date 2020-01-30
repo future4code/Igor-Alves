@@ -5,7 +5,7 @@ import { MuiThemeProvider, CssBaseline } from "@material-ui/core";
 import theme from "../../style/theme";
 import { createStore, applyMiddleware, compose } from "redux";
 import { rootReducer } from "../../reducers";
-import Planner from "../Planner";
+import HomePage from "../HomePage";
 
 const middlewares = [
   applyMiddleware(thunk),
@@ -20,7 +20,7 @@ export const App = () => (
   <Provider store={store}>
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
-      <Planner />
+      <HomePage />
     </MuiThemeProvider>
   </Provider>
 );

@@ -1,5 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
+import Planner from "../../components/Planner"
+import { getAllTasks, createTask } from "../../actions/planner"
+import { FormCard } from '../../style/homePage'
+import 'rsuite/dist/styles/rsuite-default.css';
+import { Input, Container, Dropdown, Form, Button } from 'rsuite';
+
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -10,6 +16,11 @@ class HomePage extends React.Component {
     }
   }
 
+
+  componentDidMount() {
+    this.props.getAllTasks()
+  }
+
   handleInputChange = event => {
     const { name, value } = event.target;
 
@@ -18,29 +29,50 @@ class HomePage extends React.Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    console.log(this.state.form)
+
+    const { text, day } = this.state.form;
+    this.props.createTask(text, day)
+
+    this.setState({form: {}})
   };
+
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleOnSubmit}>
-          <input name="text" onChange={this.handleInputChange} value={this.state.form.text}></input>
-          <select name="day" onChange={this.handleInputChange} value={this.state.form.day} >
-            <option value="Segunda">Segunda-Feira</option>
-            <option value="Terça">Terça-Feira</option>
-            <option value="Quarta">Quarta-Feira</option>
-            <option value="Quinta">Quinta-Feira</option>
-            <option value="Sexta">Sexta-Feira</option>
-            <option value="Sábado">Sábado</option>
-            <option value="Domingo">Domingo</option>
-          </select>
-          <button>Criar</button>
-        </form>
-        {/* Aqui vai entrar o container do planner onde irá conter o componente de cada dia da semana, que por sua vez vai conter o componente de tarefa. */}
-      </div>
+      <Container>
+        <FormCard>
+          <Form  onSubmit={this.handleOnSubmit} layout="inline">
+            <Input size="md" style={{ width: 200, display: 'inline' }} placeholder="Digite uma tarefa" name="text" type='text' onChange={this.handleInputChange} value={this.state.form.text}></Input>
+            <Dropdown title="Dia da Semana" name="day" onChange={this.handleInputChange} value={this.state.form.day} >
+              <Dropdown.Item value="Segunda">Segunda-Feira</Dropdown.Item>
+              <Dropdown.Item value="Terça">Terça-Feira</Dropdown.Item>
+              <Dropdown.Item value="Quarta">Quarta-Feira</Dropdown.Item>
+              <Dropdown.Item value="Quinta">Quinta-Feira</Dropdown.Item>
+              <Dropdown.Item value="Sexta">Sexta-Feira</Dropdown.Item>
+              <Dropdown.Item value="Sábado">Sábado</Dropdown.Item>
+              <Dropdown.Item value="Domingo">Domingo</Dropdown.Item>
+            </Dropdown>
+            <Button appearance="primary" size="md" onClick={this.handleOnSubmit}>Criar</Button>
+          </Form>
+        </FormCard>
+        <Planner tasks={this.props.allTasks}/>
+      </Container>
     )
   }
 }
 
-export default connect()(HomePage);
+
+
+const mapStateToProps = state => ({
+  allTasks: state.planner.allTasks
+});
+
+  
+const mapDispatchToProps = dispatch => ({
+  getAllTasks: () => dispatch(getAllTasks()),
+  createTask: (text, day) => dispatch(createTask(text, day)),
+})
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
