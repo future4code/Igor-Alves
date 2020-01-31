@@ -18,7 +18,7 @@ const ContainerPlanner = styled.div`
 `
 
 
-function Planner(props){
+export function Planner(props){
     return (
       <ContainerPlanner>
         <DayTask day='Segunda' tasks={props.tasks}/>

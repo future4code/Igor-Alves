@@ -17,7 +17,7 @@ const ContainerDay = styled.div`
     }
 `
 
-function DayTask(props) {
+export function DayTask(props) {
     const taskOfDay = task => {
         return  task.day === props.day
     }
