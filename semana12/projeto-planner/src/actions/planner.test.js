@@ -58,16 +58,4 @@ describe('Testa action de criar tasks', () => {
 
     expect(dispatchMock).toHaveBeenCalled()
   })
-  test('Testa mostra alert de erro', async () => {
-    const dispatchMock = jest.fn()
-    axios.post = jest.fn().mockReturnValue({
-      status: 200
-    })
-    const textMock = "Lavar a louça"
-    const dayMock = "Segunda"
-
-    await createTask(textMock, dayMock)(dispatchMock)
-
-    expect(dispatchMock).toHaveBeenCalled()
-  })
 })
