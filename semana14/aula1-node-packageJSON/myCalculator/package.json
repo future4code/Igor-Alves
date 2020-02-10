@@ -1,0 +1,17 @@
+{
+  "name": "mycalculator",
+  "version": "1.0.0",
+  "description": "Calculadora básica que realiza as operações de soma, subtração, multiplicação e divisão",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "javascript",
+    "calculadora"
+  ],
+  "author": "Igor Alves",
+  "license": "ISC"
+}

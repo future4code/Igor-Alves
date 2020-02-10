@@ -1,0 +1,7 @@
+Aprender Backend
+Aprender Node
+Aprender banco de dados
+Aprender AWS
+Escrever o package.json
+Estudar
+Enviar exercicios
