@@ -1,0 +1,17 @@
+{
+  "name": "gestordetarefas",
+  "version": "1.0.0",
+  "description": "projeto que adiciona uma tarefa em uma lista",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "javascript",
+    "tarefas"
+  ],
+  "author": "Igor Alves",
+  "license": "ISC"
+}
