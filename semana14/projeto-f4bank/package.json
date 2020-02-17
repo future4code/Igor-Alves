@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node build/createAccount.js --target es6"
+    "createAccount": "tsc && node build/createAccount.js",
+    "getBalance": "tsc && node build/getBalance.js"
   },
   "author": "",
   "license": "ISC",
