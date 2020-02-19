@@ -4,6 +4,7 @@ import { dishMenu } from './index'
 import { Dessert } from "./dessert";
 import { SaltyDish } from "./SaltyDish";
 
+
 export class Chef extends Employee {
     constructor(name: string, salary: number) {
         super(name, salary);

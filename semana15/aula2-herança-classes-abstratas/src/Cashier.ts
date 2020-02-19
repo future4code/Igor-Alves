@@ -1,5 +1,6 @@
 import { Employee } from "./Employee";
 import { Dish } from './dish'
+import { bills } from './index'
 
 export class Cashier extends Employee {
     constructor(name: string, salary: number) {
@@ -10,11 +11,12 @@ export class Cashier extends Employee {
         console.log("Eu sou Caixa")
     }
 
-    public calculateBill(consumption: Dish[]):number {
+    public calculateBill(consumption: Dish[]): void {
         let totalBill: number = 0
         consumption.forEach(dish => {
             totalBill += dish.getPrice()
         });
-        return totalBill
+
+        bills.push(totalBill)
     }
 }

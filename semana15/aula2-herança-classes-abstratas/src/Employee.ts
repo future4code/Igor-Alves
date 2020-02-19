@@ -9,5 +9,9 @@ export abstract class Employee {
         Employee.numberOfEmployees += 1
     }
 
+    public getName(): string{
+        return this.name
+    }
+
     public abstract sayJob(): void;
 }

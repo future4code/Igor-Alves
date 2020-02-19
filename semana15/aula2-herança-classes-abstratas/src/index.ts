@@ -5,6 +5,9 @@ import { Employee } from './Employee'
 import { Cashier } from './Cashier'
 import { Manager } from './Manager'
 import { Chef } from './Chef'
+import { JSONManager } from './JSONManager'
+
+
 
 const carbonara = new SaltyDish('carbonara', 30, 15, ['ovos', 'macarrão', 'creme de leite', 'bacon', 'queijo'], 15)
 
@@ -19,16 +22,40 @@ export const dishMenu: Dish[] = [carbonara, crispyShrimp, brigadeiro, passionFru
 
 const clientConsumption: Dish[] = [crispyShrimp, passionFruitMousse]
 
-const bestCashier = new Cashier('Fulano', 4000)
-
-const bestManager = new Manager('Ciclano', 8000)
-
-const materChef = new Chef('Beltrano', 15000)
 
 
-materChef.addDishToMenu('Bolo de chocolate', 50, 25, ['chocolate', 'trigo', 'ovo', 'fermento'], 25, 25)
+const bestCashier: Cashier = new Cashier('Fulano', 4000)
 
-materChef.removeDishFromMenu('brigadeiro')
+const bestManager: Manager = new Manager('Ciclano', 8000)
+
+const masterChef: Chef = new Chef('Beltrano', 15000)
+
+
+masterChef.addDishToMenu('Bolo de chocolate', 50, 25, ['chocolate', 'trigo', 'ovo', 'fermento'], 25, 25)
+
+masterChef.removeDishFromMenu('brigadeiro')
 
 console.log('Numero de Funcionários:', Employee.numberOfEmployees)
 
+
+
+// Desafios 
+
+const fileManager: JSONManager = new JSONManager()
+
+console.log(fileManager.ReadFileData('./database.json'))
+
+fileManager.writeDataInFile('./database.json', dishMenu)
+
+export const employees: Employee[] = [bestCashier, bestManager, masterChef]
+
+
+bestManager.hireEmployee('Igor', 4000, 'chef')
+
+bestManager.dismissEmployee('Beltrano')
+
+
+export const bills: number [] = []
+
+
+bestManager.calculateBill(clientConsumption)
