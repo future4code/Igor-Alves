@@ -5,7 +5,7 @@ import { ErrorLogger } from "./ErrorLogger";
 import { ErrorTracker } from "./ErrorTracker";
 
 
-export class NormalPostCreator implements PostCreator {
+export class UpperCasePostCreator implements PostCreator {
     private errorTracker: ErrorTracker
 
     constructor(){
@@ -20,7 +20,8 @@ export class NormalPostCreator implements PostCreator {
 
     public create(authorName: string, postText: string): void {
         this.validateInput(authorName, postText)
-        const post = new Post(authorName, postText, new Date)
+        const upperCaseText: string = postText.slice(1).toUpperCase()
+        const post = new Post(authorName, upperCaseText, new Date)
         this.savePost(post)
     }
 

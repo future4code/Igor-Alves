@@ -1,3 +1,3 @@
 export class Error {
-    constructor(protected errorMessage: string, protected time: Date) {} 
+    constructor(protected errorMessage: string, protected date: Date) {} 
 }

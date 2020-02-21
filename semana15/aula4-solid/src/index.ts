@@ -1,11 +1,16 @@
-import { NormalPostCreator } from "./NormalPostCreator";
-import { ErrorPrinter } from "./ErrorPrinter";
-
-// const oi = new NormalPostCreator()
-
-// oi.createNormalPost('igor', 'blabla')
+import { PostCreatorHandler } from "./PostCreatorHandler";
+import { PostReaderImp } from "./PostReaderImp";
 
 
-const error = new ErrorPrinter()
+const text = 'AAAAAAAAaisosjasodpal'
+const text2 = ''
 
-error.onError('deu errado certo', new Date)
+const author = 'Igor'
+const author2 = ''
+
+
+const main = new PostCreatorHandler()
+
+main.execute(author2, text2)
+
+

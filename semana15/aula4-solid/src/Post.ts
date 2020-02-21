@@ -1,6 +1,6 @@
 export class Post {
     constructor(
-        protected name: string, 
-        protected text: string, 
-        protected date: Date) {} 
+        public name: string, 
+        public text: string, 
+        public date: Date) {} 
 }
