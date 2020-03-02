@@ -1,0 +1,30 @@
+{
+  "name": "oop",
+  "version": "1.0.0",
+  "module": "system",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node build/index.js",
+    "test": "node ./node_modules/jest/bin/jest.js",
+    "ziplambda": "bestzip ../lambda.zip ./*",
+    "build": "tsc",
+    "postbuild": "node build ./src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jest": "^24.0.25",
+    "@types/node": "^13.7.1",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
+    "ts-node": "^8.5.4",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "3.7.3"
+  },
+  "devDependencies": {
+    "bestzip": "^2.1.5",
+    "@types/node": "^12.12.14",
+    "moment": "^2.24.0"
+  }
+}
