@@ -27,7 +27,7 @@ app.get('/', (req: Request, res: Response) => {
       '/updateUser/:id': 'altera o apelido de um usuário',
       '/deleteUser/:id': 'deleta um usuário',
       '/users/:info': 'busca um usuário pelo nome ou pelo id',
-      '/users/': 'busca todos os usuários podendo retornar em ordem alfabetica ou pela idade',
+      '/allUsers/': 'busca todos os usuários podendo retornar em ordem alfabetica ou pela idade',
       '/createTask/': 'cria uma nova tarefa',
       '/updateTask/:id': 'altera a data limite e a descrição de uma tarefa',
       '/setResponsible/': 'define um responsavel para uma tarefa',
