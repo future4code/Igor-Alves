@@ -50,6 +50,23 @@ VALUES(
     `);
   }
 
+  public async getUserById(id:string): Promise<User | undefined> {
+    const result = await this.connection.raw(
+      `SELECT * FROM ${this.userTableName} WHERE id='${id}'`
+    )
+
+    if(!result[0][0]) {
+      return undefined
+    }
+
+    return new User(
+      result[0][0].id,
+      result[0][0].name,
+      result[0][0].email,
+      new Date(result[0][0].birthDate)
+    )
+  }
+
   public async getAllUsers(): Promise<User[]> {
     const result = await this.connection.raw(
       `SELECT * FROM ${this.userTableName}`
@@ -81,5 +98,11 @@ VALUES(
     }
 
     return this.mapDbUserToUser(result[0][0])
+  }
+
+  public async deleteUser(id: string): Promise<void>{
+    await this.connection.raw(
+      `DELETE FROM ${this.userTableName} WHERE id = '${id}'`
+    );
   }
 }
