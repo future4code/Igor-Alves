@@ -1,13 +1,16 @@
 import * as jwt from "jsonwebtoken";
+import { JWTAutenticationGateway } from "../business/gateways/jwtAutenticationGateway";
 
-export class JWTAutentication {
-    generateToken(userId: string) {
-        return jwt.sign({userId}, process.env.JWT_KEY as string, {expiresIn: '1h'})
-    }
+export class JWTAutentication implements JWTAutenticationGateway {
+  private expiresIn = "1h"
 
-    verifyToken(token: string) {
-        const data = jwt.verify(token, process.env.JWT_KEY as string) as {userId: string}
+  generateToken(userId: string): string {
+    return jwt.sign({userId}, process.env.JWT_KEY as string, {expiresIn: this.expiresIn})
+  }
 
-        return data.userId
-    }
+  verifyToken(token: string): string  {
+    const data = jwt.verify(token, process.env.JWT_KEY as string) as {userId: string}
+
+    return data.userId
+  }
 }

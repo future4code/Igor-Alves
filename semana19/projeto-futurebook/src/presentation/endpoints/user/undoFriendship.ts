@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
-import { FriendDB } from "../../data/friendDB"
-import { UndoFriendshipUC } from "../../business/usecases/user/undoFriendship";
+import { FriendDB } from "../../../data/friendDB";
+import { UndoFriendshipUC } from "../../../business/usecases/user/undoFriendship";
+import { JWTAutentication } from "../../../utils/jwtAutentication";
 
 
 export const undoFriendshipEndpoint = async (req: Request, res: Response) => {
   try {
-    const undoFriendshipUC = new UndoFriendshipUC (new FriendDB());
+    const undoFriendshipUC = new UndoFriendshipUC (new FriendDB(), new JWTAutentication());
 
     const result = await undoFriendshipUC.execute({
       token: req.headers.auth as string,

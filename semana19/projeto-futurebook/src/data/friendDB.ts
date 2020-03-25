@@ -7,7 +7,7 @@ export class FriendDB extends BaseDB implements FriendGateway {
 
   public async createFriendship(userId: string, friendId: string): Promise<void> {
     await this.connection.raw(`
-      INSERT INTO ${this.friendsTableName} (user_id1, user_id2) 
+      INSERT INTO ${this.friendsTableName} (user_id, friend_id) 
       VALUES(
         '${userId}',
         '${friendId}'
@@ -19,8 +19,8 @@ export class FriendDB extends BaseDB implements FriendGateway {
     const result = await this.connection.raw(`
       SELECT * 
       FROM ${this.friendsTableName}
-      WHERE user_id1 = '${userId}' 
-      AND user_id2 = '${friendId}';
+      WHERE user_id = '${userId}' 
+      AND friend_id = '${friendId}';
     `)
 
     if(!result[0][0]){
@@ -34,8 +34,8 @@ export class FriendDB extends BaseDB implements FriendGateway {
     await this.connection.raw(`
       DELETE 
       FROM ${this.friendsTableName}
-      WHERE user_id1 = '${userId}'
-      AND user_id2 = '${friendId}';
+      WHERE user_id = '${userId}'
+      AND friend_id = '${friendId}';
     `)
   }
 }

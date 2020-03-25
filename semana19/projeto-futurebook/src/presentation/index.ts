@@ -1,8 +1,9 @@
 import express from "express";
-import { signupEndpoint } from "./endpoints/signup";
-import { loginEndpoint } from "./endpoints/login";
-import { makeFriendshipEndpoint } from "./endpoints/makeFriendship";
-import { undoFriendshipEndpoint } from "./endpoints/undoFriendship";
+import { signupEndpoint } from "./endpoints/user/signup";
+import { loginEndpoint } from "./endpoints/user/login";
+import { makeFriendshipEndpoint } from "./endpoints/user/makeFriendship";
+import { undoFriendshipEndpoint } from "./endpoints/user/undoFriendship";
+import { creatPostEndpoint } from "./endpoints/post/createPost";
 
 
 const app = express();
@@ -13,9 +14,11 @@ app.post('/signup', signupEndpoint);
 
 app.post('/login', loginEndpoint);
 
-app.post('/makefriendship', makeFriendshipEndpoint)
+app.post('/friendship/make', makeFriendshipEndpoint);
 
-app.post('/undofriendship', undoFriendshipEndpoint)
+app.post('/friendship/undo', undoFriendshipEndpoint);
+
+app.post('/post/create', creatPostEndpoint);
 
 
 export default app;

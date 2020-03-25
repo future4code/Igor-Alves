@@ -1,12 +1,12 @@
 import { v4 } from "uuid";
 import { User } from "../../entities/user";
 import { UserGateway } from "../../gateways/userGateway";
-import { JWTAutentication } from "../../../utils/jwtAutentication";
-import { BcryptPassword } from "../../../utils/bcrypt";
+import { BcryptPasswordGateway } from "../../gateways/bcryptPassword";
+import { JWTAutenticationGateway } from "../../gateways/jwtAutenticationGateway";
 
 
 export class SignupUC {
-  constructor(private db: UserGateway) {}
+  constructor(private db: UserGateway, private jwtAuth: JWTAutenticationGateway , private bcrypt: BcryptPasswordGateway) {}
 
   public async execute(input: SignupUCInput): Promise<SignupUCOutput | undefined>{
     try{
@@ -19,16 +19,12 @@ export class SignupUC {
       if (input.email.indexOf("@") === -1) {
         throw new Error("Invalid email");
       }
-
-      const bcrypt = new BcryptPassword();
   
-      const hashPassword = await bcrypt.generateHash(input.password);
+      const hashPassword = await this.bcrypt.generateHash(input.password);
 
       const newUser = new User(id, input.name, input.email, hashPassword);
   
-      const JWTAuth = new JWTAutentication();
-
-      const token = JWTAuth.generateToken(newUser.getId());
+      const token = this.jwtAuth.generateToken(newUser.getId());
      
       await this.db.createUser(newUser);
 

@@ -1,10 +1,10 @@
 import { UserGateway } from "../../gateways/userGateway";
-import { BcryptPassword } from "../../../utils/bcrypt";
-import { JWTAutentication } from "../../../utils/jwtAutentication";
+import { JWTAutenticationGateway } from "../../gateways/jwtAutenticationGateway";
+import { BcryptPasswordGateway } from "../../gateways/bcryptPassword";
 
 
 export class LoginUC {
-  constructor(private db: UserGateway) {}
+  constructor(private db: UserGateway, private jwtAuth: JWTAutenticationGateway, private bcrypt: BcryptPasswordGateway) {}
 
   public async execute(input: LoginUCInput): Promise<LoginUCOutput | undefined> {
     try {
@@ -22,17 +22,13 @@ export class LoginUC {
         throw new Error("Email incorreto");
       }
 
-      const bcrypt = new BcryptPassword()
-
-      const isPasswordCorrect = await bcrypt.compareHash(input.password, user.getPassword());
+      const isPasswordCorrect = await this.bcrypt.compareHash(input.password, user.getPassword());
 
       if (!isPasswordCorrect) {
         throw new Error("Senha incorreta")
       }
 
-      const jwtAuth = new JWTAutentication()
-
-      const token = jwtAuth.generateToken(user.getId());
+      const token = this.jwtAuth.generateToken(user.getId());
 
       return {
         message: "Usuário logado com sucesso",

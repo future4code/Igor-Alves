@@ -1,18 +1,16 @@
 import { FriendGateway } from "../../gateways/friendGateway"
-import { JWTAutentication } from "../../../utils/jwtAutentication";
+import { JWTAutenticationGateway } from "../../gateways/jwtAutenticationGateway";
 
 
 export class UndoFriendshipUC {
-  constructor(private db: FriendGateway) {}
+  constructor(private db: FriendGateway, private jwtAuth: JWTAutenticationGateway) {}
   
   public async execute(input: UndoFriendshipUCInput): Promise<UndoFriendshipUCOutput | undefined>{
     if(!input.token) {
       throw new Error("O Usuário precisa estar logado para fazer uma amizade.")
     }
 
-    const jwtAuth = new JWTAutentication()
-
-    const userId = jwtAuth.verifyToken(input.token as string) 
+    const userId = this.jwtAuth.verifyToken(input.token as string) 
 
     const areFriends = await this.db.verifyFriendship(userId, input.friendId)
 
