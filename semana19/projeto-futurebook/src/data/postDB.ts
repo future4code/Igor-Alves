@@ -64,9 +64,9 @@ export class PostDB extends BaseDB implements PostGateway {
           description,
           creationDate,
           type,
-          authorId,
-          authorName,
-          authorEmail
+          userId,
+          userName,
+          userEmail
         )
         VALUES(
           '${friend.friend_id}',

@@ -37,7 +37,35 @@ export class FeedDB extends BaseDB implements FeedGateway {
     return response[0].map((feed: any) => {
       return new Feed(
         feed.userFeed, 
-        feed.id, 
+        feed.postId, 
+        feed.picture, 
+        feed.description, 
+        this.mapDBDateToDate(feed.creationDate), 
+        this.mapDBTypeToPostType(feed.type), 
+        feed.userId,
+        feed.userName,
+        feed.userEmail
+      )
+    })
+  }
+
+  public async getFeedByType(
+    userId: string, 
+    limit: number,
+    offset: number,
+    type: string
+  ): Promise<Feed[]> {
+    const response = await this.connection.raw(`
+      SELECT * FROM ${this.feedTableName}
+      WHERE userFeed = '${userId}' AND type = '${type}'
+      ORDER BY creationDate DESC
+      LIMIT ${limit} OFFSET ${offset};
+    `)
+
+    return response[0].map((feed: any) => {
+      return new Feed(
+        feed.userFeed, 
+        feed.postId, 
         feed.picture, 
         feed.description, 
         this.mapDBDateToDate(feed.creationDate), 

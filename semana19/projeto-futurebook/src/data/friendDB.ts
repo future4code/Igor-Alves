@@ -46,9 +46,9 @@ export class FriendDB extends BaseDB implements FriendGateway {
         description,
         creationDate,
         type,
-        authorId,
-        authorName,
-        authorEmail
+        userId,
+        userName,
+        userEmail
       )
       VALUES(
         '${userId}',
@@ -88,6 +88,13 @@ export class FriendDB extends BaseDB implements FriendGateway {
       FROM ${this.friendsTableName}
       WHERE user_id = '${userId}'
       AND friend_id = '${friendId}';
+    `)
+
+    await this.connection.raw(`
+      DELETE 
+      FROM FUTUREBOOK_FEED
+      WHERE userFeed = '${userId}'
+      AND userId = '${friendId}';
     `)
   }
 }

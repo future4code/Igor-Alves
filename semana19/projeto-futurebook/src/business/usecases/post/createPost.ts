@@ -2,6 +2,7 @@ import { v4 } from "uuid";
 import { JWTAutenticationGateway } from "../../gateways/jwtAutenticationGateway";
 import { PostGateway } from "../../gateways/postGateway";
 import { Post } from "../../entities/post";
+import { UnauthorizedError } from "../../errors/UnauthorizedError";
 
 
 export class CreatePostUC {
@@ -12,6 +13,10 @@ export class CreatePostUC {
 
   public async execute(input:CreatePostUCInput): Promise<CreatePostUCOutput | undefined> {
     try{
+      if(!input.token) {
+        throw new UnauthorizedError("Unauthorized")
+      }
+      
       const id = v4();
 
       if(!input){
@@ -21,7 +26,7 @@ export class CreatePostUC {
       const userId = this.jwtAuth.verifyToken(input.token)
 
       if(!userId) {
-        throw new Error("Acesso não autorizado")
+        throw new UnauthorizedError("Unauthorized")
       }
 
       const newPost = new Post(
@@ -36,11 +41,11 @@ export class CreatePostUC {
       await this.db.createPost(newPost);
 
       return {
-        message:"Post criado com sucesso",
-      };
+        message:"Post created successfully",
+      }
     }catch(err){
       console.log(err)
-      throw new Error("Erro ao criar post")
+      throw new Error("An error occurred while trying to create a post")
     }
   }
 }

@@ -3,6 +3,7 @@ import { User } from "../../entities/user";
 import { UserGateway } from "../../gateways/userGateway";
 import { BcryptPasswordGateway } from "../../gateways/bcryptPassword";
 import { JWTAutenticationGateway } from "../../gateways/jwtAutenticationGateway";
+import { BadRequestError } from "../../errors/BadRequestError";
 
 
 export class SignupUC {
@@ -17,7 +18,7 @@ export class SignupUC {
       }
 
       if (input.email.indexOf("@") === -1) {
-        throw new Error("Invalid email");
+        throw new BadRequestError("Invalid email request");
       }
   
       const hashPassword = await this.bcrypt.generateHash(input.password);
@@ -29,12 +30,14 @@ export class SignupUC {
       await this.db.createUser(newUser);
 
       return {
-        message:"Usuário criado com sucesso",
+        message:"User successfully created",
         token: token
       };
     }catch(err){
-      console.log(err)
-      throw new Error("Erro ao cadastrar usuário")
+      if(err.errorCode) {
+        throw err
+      }
+      throw new Error('An error occurred during sign up')
     }
   }
 }
