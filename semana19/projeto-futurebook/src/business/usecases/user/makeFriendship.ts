@@ -12,6 +12,10 @@ export class MakeFriendshipUC {
 
     const userId = this.jwtAuth.verifyToken(input.token as string) 
 
+    if(await this.db.verifyFriendship(userId, input.friendId)) {
+      throw new Error("Vocês já são amigos")
+    }
+
     await this.db.createFriendship(userId, input.friendId)
 
     await this.db.createFriendship(input.friendId, userId)

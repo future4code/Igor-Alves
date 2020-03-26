@@ -1,7 +1,6 @@
 import { BaseDB } from "./baseDB";
 import { Post, PostType } from "../business/entities/post";
 import { PostGateway } from "../business/gateways/postGateway";
-import moment from 'moment';
 
 
 export class PostDB extends BaseDB implements PostGateway {
@@ -18,23 +17,8 @@ export class PostDB extends BaseDB implements PostGateway {
     }
   }
 
-  private mapDBTypeToPostType(type: string): PostType {
-    switch (type) {
-      case "normal":
-        return PostType.NORMAL;
-      case "event":
-        return PostType.EVENT;
-      default:
-        return PostType.NORMAL;
-    }
-  }
-
   private mapDateToDBDate(input: Date): string {
     return input.toISOString().slice(0, 19).replace('T', ' ');
-  }
-
-  private mapDBDateToDate(input: string): Date {
-    return new Date(input);
   }
 
   public async createPost(post: Post): Promise<void> {
@@ -56,5 +40,48 @@ export class PostDB extends BaseDB implements PostGateway {
         '${post.getUserId()}'
       );`
     )
+
+    const authorId = post.getUserId()
+
+    const friendsId = await this.connection.raw(`
+      SELECT friend_id
+      FROM FUTUREBOOK_FRIENDS
+      WHERE user_id = '${authorId}'
+    `)
+
+    const authorData = await this.connection.raw(`
+      SELECT name, email
+      FROM FUTUREBOOK_USERS
+      WHERE id = '${authorId}'
+    `)
+
+    const promisesArray = friendsId[0].map(async (friend:any) => {
+      return await this.connection.raw(`
+        INSERT INTO FUTUREBOOK_FEED(
+          userFeed,
+          postId,
+          picture,
+          description,
+          creationDate,
+          type,
+          authorId,
+          authorName,
+          authorEmail
+        )
+        VALUES(
+          '${friend.friend_id}',
+          '${post.getId()}',
+          '${post.getPicture()}',
+          '${post.getDescription()}',
+          '${this.mapDateToDBDate(post.getCreationDate())}',
+          '${this.mapPostTypeToDB(post.getType())}',
+          '${post.getUserId()}',
+          '${authorData[0][0].name}',
+          '${authorData[0][0].email}'
+        );`
+      ) 
+    })
+
+    await Promise.all(promisesArray)
   }
 }

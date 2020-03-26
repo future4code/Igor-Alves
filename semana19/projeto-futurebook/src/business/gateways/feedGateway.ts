@@ -1,5 +1,5 @@
 import { Feed } from "../entities/feed";
 
 export interface FeedGateway {
-    getFeed(userId: string): Promise<Feed[]>
+    getFeed(userId: string, limit: number, offset: number): Promise<Feed[]>
 }
