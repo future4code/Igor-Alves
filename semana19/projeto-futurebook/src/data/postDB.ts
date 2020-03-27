@@ -84,4 +84,34 @@ export class PostDB extends BaseDB implements PostGateway {
 
     await Promise.all(promisesArray)
   }
+
+  public async verifyLike(postId: string, userId: string): Promise<boolean> {
+    const result = await this.connection.raw(`
+      SELECT * 
+      FROM FUTUREBOOK_LIKE_POST
+      WHERE userId = '${userId}' 
+      AND postId = '${postId}';
+    `)
+    
+    if(!result[0][0]) {
+      return false
+    }
+
+    return true
+  }
+
+  public async likePost(postId: string, userId: string): Promise<void> {
+    await this.connection.raw(`
+      INSERT INTO FUTUREBOOK_LIKE_POST(userId, postId)
+      VALUES('${userId}', '${postId}');`
+    )
+  }
+
+  public async dislikePost(postId: string, userId: string): Promise<void> {
+    await this.connection.raw(`
+      DELETE 
+      FROM FUTUREBOOK_LIKE_POST
+      WHERE userId ='${userId}' AND postId = '${postId}';`
+    )
+  }
 }

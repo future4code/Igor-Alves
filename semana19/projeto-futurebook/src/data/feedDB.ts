@@ -1,7 +1,7 @@
 import { FeedGateway } from "../business/gateways/feedGateway";
 import { BaseDB } from "./baseDB";
 import { Feed } from "../business/entities/feed";
-import { PostType } from "../business/entities/post";
+import { PostType, Post } from "../business/entities/post";
 
 
 export class FeedDB extends BaseDB implements FeedGateway {
@@ -75,5 +75,15 @@ export class FeedDB extends BaseDB implements FeedGateway {
         feed.userEmail
       )
     })
+  }
+
+  public async getPostByIdFromFeed(postId: string, userId: string): Promise<Post | undefined> {
+    const result = await this.connection.raw(`
+      SELECT * 
+      FROM ${this.feedTableName}
+      WHERE userFeed = '${userId}' AND postId = '${postId}';
+    `)
+
+    return result[0][0]
   }
 }

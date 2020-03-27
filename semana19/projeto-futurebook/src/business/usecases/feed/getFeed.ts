@@ -46,7 +46,6 @@ export class GetFeedUC {
         }
       });
     } catch (err) {
-      console.log(err)
       if(err.errorCode) {
         throw err
       }

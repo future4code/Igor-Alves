@@ -15,7 +15,9 @@ export class MakeFriendshipUC {
 
       const userId = this.jwtAuth.verifyToken(input.token as string) 
 
-      if(await this.db.verifyFriendship(userId, input.friendId)) {
+      const isFriend = await this.db.verifyFriendship(userId, input.friendId)
+
+      if(!isFriend) {
         throw new ConflictError("You are friends already")
       }
 

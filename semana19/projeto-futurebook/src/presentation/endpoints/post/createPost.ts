@@ -6,9 +6,9 @@ import { JWTAutentication } from "../../../utils/jwtAutentication";
 
 export const creatPostEndpoint = async (req: Request, res: Response) => {
   try {
-    const makeFriendshipUC = new CreatePostUC(new PostDB(), new JWTAutentication());
+    const createPostUC = new CreatePostUC(new PostDB(), new JWTAutentication());
 
-    const result = await makeFriendshipUC.execute({
+    const result = await createPostUC.execute({
       token: req.headers.auth as string,
       picture: req.body.picture,
       description: req.body.description,

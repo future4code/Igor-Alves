@@ -44,7 +44,9 @@ export class CreatePostUC {
         message:"Post created successfully",
       }
     }catch(err){
-      console.log(err)
+      if(err.errorCode) {
+        throw err
+      }
       throw new Error("An error occurred while trying to create a post")
     }
   }
