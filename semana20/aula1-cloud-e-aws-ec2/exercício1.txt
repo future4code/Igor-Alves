@@ -1,0 +1,19 @@
+Exercício 1
+
+1. Primeiro seria necessário escolher a região onde a maquina estaria localizada, em seguida seria necessário criar uma instancia do EC2, teriamos que definir qual sistema operacional essa instancia teria, e as demais configurações. Com a instancia criada teriamos que fazer uma chave para se conectar com essa instancia. com a instancia pronta, seria necessário ne conectar a ela através do ssh, a partir dai teriamos o acesso a maquina criada no servidor da amazon.
+
+2. 4eddit-bouman-8
+
+3. ssh -i ec2-igor-alves.pem ubuntu@3.85.11.48
+
+4. git clone https://github.com/future4code/4eddit-bouman-8.git - Clona o projeto para a pasta em que o terminal está aberto
+   npm i - instala as dependencias necessárias do projeto
+   npm run build - cria uma build do projeto que está pronta para o deploy
+   sudo apt install python - caso ainda não tenha o python instalado
+   sudo python -mSimpleHTTPServer 80 - coloca o projeto para se comunicar através da porta 80
+
+5. porta 80 liberada para anywhere
+
+6. já havia realizado esse procedimento na questão 4
+
+7. ha unica diferença foi que ao invés de criar um app react direto na maquina aws, dessa vez nós pegamos um projeto pronto que estava no github e colocamos ele no ar. todo o procedimento após o clone do projeto para o computador da aws foi o mesmo que utilizamos em aula.
