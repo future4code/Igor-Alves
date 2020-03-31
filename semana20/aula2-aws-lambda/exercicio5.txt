@@ -1,0 +1,65 @@
+Exercício 5:
+
+const knex = require("knex");
+const uuid = require("uuid")
+
+const connection = knex({
+  client: "mysql",
+  connection: {
+    host: process.env.HOST,
+    port: 3306,
+    user: process.env.USER,
+    password: process.env.PASS,
+    database: process.env.DB
+  }
+});
+
+
+exports.handler = async event => {
+  const id = uuid.v4()
+
+  if (!event.character) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ message: "Missing input" })
+    };
+  }
+
+  const newCharacter = {
+    id,
+    name: event.character.name,
+    cartoon: event.character.cartoon,
+    picture: event.character.picture
+  }
+
+  if(!newCharacter.name){
+    return {
+      status: 400,
+      response: "Missing name, please insert a name of the character"
+    }
+  }
+
+  if(!newCharacter.cartoon){
+    return {
+      status: 400,
+      response: "Missing cartoon, please insert a cartoon of this character"
+    }
+  }
+
+  if(!newCharacter.picture){
+    return {
+      status: 400,
+      response: "Missing picture, please insert a picture of this character"
+    }
+  }
+
+  await connection.raw(`
+    INSERT INTO myproddb.characters (id, name, cartoon, picture)
+    VALUES ('${newCharacter.id}','${newCharacter.name}','${newCharacter.cartoon}','${newCharacter.picture}');
+  `)
+
+  return {
+    status: 200,
+    response: "character successfully added"
+  }
+}
