@@ -1,0 +1,9 @@
+Exercício 2
+
+1. Todos os passos OK.
+
+2. OK
+
+3. OK
+
+4. Esse processo está com o tutorial muito bem explicado, o que facilitou bastante e me deixou sem dificuldades. instalar o banco de dados na ec2, pois são comandos bem simples.
