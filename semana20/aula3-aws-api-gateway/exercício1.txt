@@ -1,0 +1,75 @@
+Exercício 1:
+
+1) ok
+
+
+2) 
+2.1 - 
+    Entrada: Se o query params e o body estiver vazio.
+    Saida: message: "Missing input!"
+
+    Entrada: Se o query params estiver com uma entrada diferente de undefined e null e o body vazio.
+    Saida: { statusCode: 200, body: '{ False, True }'}
+
+    Entrada: Se o query params e o body estiverem com entradas diferentes de undefined e null.
+    Saida: { statusCode: 200, body: '{ True, True }'}
+
+2.2 - 
+    Para conseguir acessar o conteudo que vem do body como um objeto, já que ele vem por padrão como string.
+
+2.3 - 
+    Ele volta um 200 caso uma das verificações seja true ou as duas verificações sejam true, no caso o body e o query params não podem ser undefined ou null juntas.
+
+2.4 - 
+    Caso o body e o query params sejam undefined ou null juntas.
+
+2.5 -
+    ok.
+
+
+3)
+const verifyExistence = input => {
+  return input !== undefined && input !== null;
+};
+
+const isValidCpf = input => {
+  if(input.length !== 11) {
+    return false
+  }
+  if(input.indexOf('-') === -1) {
+    return false
+  }
+  if(input.indexOf('.') === -1) {
+    return false
+  }
+  
+  return true
+};
+
+exports.handler = async event => {
+  try {
+    const requestBody = JSON.parse(event.body);
+
+    const hasCpf = verifyExistence(requestBody.cpf);
+
+    if (!hasCpf) {
+      throw new Error("Missing input!");
+    }
+    
+    const isCpf = isValidCpf(requestBody.cpf);
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        message: isCpf
+      })
+    };
+  } catch (err) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({
+        message: err.message
+      })
+    };
+  }
+};
