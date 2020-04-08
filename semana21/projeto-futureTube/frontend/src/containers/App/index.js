@@ -2,14 +2,6 @@ import React from "react";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import Router from "../Router";
-import {
-  MuiThemeProvider,
-  createGenerateClassName,
-  jssPreset,
-  CssBaseline
-} from "@material-ui/core";
-import { create } from "jss";
-import theme from "../../style/theme";
 import { createBrowserHistory } from "history";
 import { createStore, applyMiddleware, compose } from "redux";
 import { generateReducers } from "../../reducers";
@@ -34,10 +26,7 @@ const store = createStore(generateReducers(history), compose(...middlewares));
 
 export const App = () => (
   <Provider store={store}>
-      <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        <Router history={history} />
-      </MuiThemeProvider>
+    <Router history={history} />
   </Provider>
 );
 

@@ -45,21 +45,25 @@ const Button = styled.button`
   outline: none;
 `
 
-const RegisterSlogan = styled.div`
-  font-size: 12px;
-  margin-top: 60px;
-`
-
-export function LoginForm(props) {
+export function SignupForm(props) {
   return(
     <FormContainer onSubmit={props.onSubmit}>
-      <FormHeader>Bem-vindo ao FutureTube</FormHeader>
+      <FormHeader>Cadastre-se</FormHeader>
+      <Input
+        type='text'
+        name='name'
+        placeholder='Nome'
+        onChange={props.onChange}
+        value={props.name}
+        required
+      />
       <Input
         type='text'
         name='email'
         placeholder='Email'
         onChange={props.onChange}
         value={props.email}
+        required
       />
       <Input
         type='password'
@@ -67,11 +71,9 @@ export function LoginForm(props) {
         placeholder='Senha'
         onChange={props.onChange}
         value={props.password}
+        required
       />
-      <Button>Entrar</Button>
-      <RegisterSlogan>
-        <span>Ainda não é cadastrado? </span><span>Click Aqui</span>
-      </RegisterSlogan>
+      <Button>Enviar</Button>
     </FormContainer>
   );
 }

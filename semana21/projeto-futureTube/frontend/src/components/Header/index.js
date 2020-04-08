@@ -6,7 +6,7 @@ const HeaderContainer = styled.div`
   height: 10vh;
   width: 100vw;
   background-color: #ffffff;
-  box-shadow: 0px 10px 12px -5px rgba(0,0,0,0.15);
+  box-shadow: 0px 6px 12px -5px rgba(0,0,0,0.2);
   display: flex;
   margin: 0;
   padding: 0;
@@ -37,7 +37,7 @@ export function Header(props) {
   return(
     <HeaderContainer>
       {props.menu && <Button onClick={props.onClickMenu}>|||</Button>}
-      <Logo src={logo} alt="Logo FutureTube"></Logo>
+      <Logo src={logo} alt="Logo FutureTube"/>
     </HeaderContainer>
   );
 }

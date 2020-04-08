@@ -1,11 +1,12 @@
 import React, { useState }  from 'react';
 import { useDispatch } from "react-redux";
 import { Header } from '../../components/Header';
-import { LoginForm } from '../../components/LoginForm';
+import { SignupForm } from '../../components/SignupForm';
 
 
-export function LoginPage() {
+export function SignupPage() {
   const initialState = {
+    name: '',
     email: '',
     password: '',
   }
@@ -25,11 +26,10 @@ export function LoginPage() {
     setForm(initialState)
   };
 
-
   return(
     <>
       <Header/>
-      <LoginForm
+      <SignupForm
         email={form.email}
         password={form.password}
         onChange={handleChange}
