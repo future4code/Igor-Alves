@@ -58,7 +58,7 @@ export function SignupForm(props) {
         required
       />
       <Input
-        type='text'
+        type='email'
         name='email'
         placeholder='Email'
         onChange={props.onChange}
