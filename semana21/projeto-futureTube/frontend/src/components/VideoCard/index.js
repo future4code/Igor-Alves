@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const CardContainer = styled.div`
   height: fit-content;
-  width: auto;
+  width: fit-content;
   margin: 0;
   padding: 0;
   display: flex;
@@ -38,7 +38,7 @@ const PostTime = styled.p`
 
 export function VideoCard(props) {
   return(
-    <CardContainer>
+    <CardContainer onClick={() => {console.log("Dispatch pagina de video")}}>
       <Thumbnail src='https://i.ytimg.com/vi/LzE45Wfd5zo/maxresdefault.jpg'/>
       <Title>Dusk | Chillstep Mix</Title>
       <Author>ChilloutDeer</Author>

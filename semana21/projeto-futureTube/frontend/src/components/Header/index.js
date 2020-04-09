@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import logo from '../../resources/logo.png'
 
 const HeaderContainer = styled.div`
+  position: sticky;
+  top: 0;
   height: 7vh;
   width: 100vw;
   background-color: #ffffff;

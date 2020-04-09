@@ -8,16 +8,16 @@ import User from '../../resources/user.svg';
 import Logout from '../../resources/logout.svg';
 
 
-const MenuContainer = styled.div`
+const MenuContainer = styled.aside`
   height: 100%;
-  width: 15vw;
+  width: 300px;
   background-color: #ffffff;
   box-shadow: 0px 6px 12px -5px rgba(0,0,0,0.2);
   display: flex;
   margin: 0;
   padding: 0;
   display: flex;
-  align-items: end;
+  align-items: initial;
   justify-content: initial;
   flex-direction: column;
   z-index: 9;
