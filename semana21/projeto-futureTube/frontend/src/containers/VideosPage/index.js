@@ -3,15 +3,15 @@ import { useDispatch } from "react-redux";
 import { Header } from '../../components/Header';
 import { ContentDisplay } from '../../components/ContentDisplay';
 import { SideMenu } from '../../components/SideMenu';
-import { UploadForm } from '../../components/UploadForm';
+import { MyVideosDisplay } from '../../components/MyVideosDisplay';
+import { VideoItem } from '../../components/VideoItem';
 
 
-export function UploadPage() {
+export function VideosPage() {
   const initialState = {
-    video: '',
-    thumbnail: '',
-    title: '',
-    description: '',
+    oldPassword: '',
+    newPassword: '',
+    confirmPassword: '',
   }
 
   const [form, setForm] = useState(initialState)
@@ -34,14 +34,17 @@ export function UploadPage() {
       <Header menu/>
       <ContentDisplay>
         <SideMenu/>
-        <UploadForm
-          video={form.video}
-          thumbnail={form.thumbnail}
-          title={form.title}
-          description={form.description}
-          onChange={handleChange}
-          onSubmit={handleSubmit}
-        />
+        <MyVideosDisplay>
+          <VideoItem/>
+          <VideoItem/>
+          <VideoItem/>
+          <VideoItem/>
+          <VideoItem/>
+          <VideoItem/>
+          <VideoItem/>
+          <VideoItem/>
+          <VideoItem/>
+        </MyVideosDisplay>
       </ContentDisplay>
     </>
   );

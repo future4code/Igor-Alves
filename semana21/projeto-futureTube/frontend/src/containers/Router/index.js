@@ -5,13 +5,17 @@ import { LoginPage } from "../LoginPage";
 import { SignupPage } from "../SignupPage"
 import { HomePage } from "../HomePage";
 import { UploadPage } from "../UploadPage";
+import { AccountPage } from "../AccountPage";
+import { VideosPage } from "../VideosPage";
 
 
 export const routes = {
   login: "/login",
   signup: "/signup",
-  home: "/",
-  upload: "/upload"
+  home: "/home",
+  upload: "/upload",
+  account: "/account",
+  videos: "/"
 };
 
 
@@ -23,6 +27,8 @@ function Router(props) {
         <Route exact path={routes.signup} component={SignupPage} />
         <Route exact path={routes.home} component={HomePage} />
         <Route exact path={routes.upload} component={UploadPage} />
+        <Route exact path={routes.account} component={AccountPage} />
+        <Route exact path={routes.videos} component={VideosPage} />
       </Switch>
     </ConnectedRouter>
   );

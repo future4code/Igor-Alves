@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import UploadImg from '../../resources/upload-background.png'
+import AccountImg from '../../resources/user.svg'
 
 
 const ContentContainer = styled.div`
@@ -57,43 +57,36 @@ const Button = styled.button`
 `
 
 
-export function UploadForm(props) {
+export function AccountForm(props) {
   return(
     <ContentContainer>
       <TextContent>
-        <h2>Qual Video deseja fazer upload</h2>
-        <BackgroundImg src={UploadImg}></BackgroundImg>
+        <h2>Deseja alterar a sua senha</h2>
+        <BackgroundImg src={AccountImg}></BackgroundImg>
       </TextContent>
       <FormContainer onSubmit={props.onSubmit}>
         <Input
-          name='video'
+          name='oldPassword'
           type="text"
           onChange={props.onChange}
-          value={props.video}
-          placeholder='Video'
+          value={props.oldPassword}
+          placeholder='Senha Antiga'
         />
         <Input 
-          name='thumbnail'
+          name='newPassword'
           type="text"
           onChange={props.onChange}
           value={props.thumbnail}
-          placeholder='Thumbnail'
+          placeholder='Senha Nova'
         />
         <Input 
-          name='title'
+          name='confirmPassword'
           type="text"
           onChange={props.onChange}
-          value={props.title}
-          placeholder='Titulo'
+          value={props.confirmPassword}
+          placeholder='Confirmar Senha Nova'
         />
-        <Input 
-          name='description'
-          type="text"
-          onChange={props.onChange}
-          value={props.description}
-          placeholder='Descrição'
-        />
-        <Button>Enviar</Button>
+        <Button>Alterar</Button>
       </FormContainer>
     </ContentContainer>
   );
