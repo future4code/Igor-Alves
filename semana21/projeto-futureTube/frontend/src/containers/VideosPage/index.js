@@ -1,5 +1,5 @@
 import React, { useState }  from 'react';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Header } from '../../components/Header';
 import { ContentDisplay } from '../../components/ContentDisplay';
 import { SideMenu } from '../../components/SideMenu';
@@ -14,8 +14,9 @@ export function VideosPage() {
     confirmPassword: '',
   }
 
-  const [form, setForm] = useState(initialState)
   const dispatch = useDispatch()
+  const [form, setForm] = useState(initialState)
+  const visibleMenu = useSelector(state => state.user.visibleMenu)
 
   const handleChange = (event) => {
     const auxForm = { ...form };
@@ -33,7 +34,7 @@ export function VideosPage() {
     <>
       <Header menu/>
       <ContentDisplay>
-        <SideMenu/>
+        { visibleMenu ? <SideMenu/> : null }
         <MyVideosDisplay>
           <VideoItem/>
           <VideoItem/>

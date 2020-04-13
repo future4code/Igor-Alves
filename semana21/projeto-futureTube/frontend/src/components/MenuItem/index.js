@@ -29,7 +29,7 @@ const Icon = styled.img`
 
 export function MenuItem(props) {
   return(
-    <ItemContainer onClick={() => console.log('Dispatch Página do Icone')}>
+    <ItemContainer onClick={props.changePage}>
       <Icon src={props.icon} alt='Icone do menu'/><span>{props.text}</span>
     </ItemContainer>
   );

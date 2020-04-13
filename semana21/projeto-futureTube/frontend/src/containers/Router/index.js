@@ -12,10 +12,10 @@ import { VideosPage } from "../VideosPage";
 export const routes = {
   login: "/login",
   signup: "/signup",
-  home: "/home",
+  home: "/",
   upload: "/upload",
   account: "/account",
-  videos: "/"
+  videos: "/myvideos",
 };
 
 

@@ -1,6 +1,8 @@
 import React from 'react';
+import { useDispatch } from "react-redux";
 import styled from 'styled-components';
-import logo from '../../resources/logo.png'
+import logo from '../../resources/logo.png';
+import { setMenuVisible } from "../../actions/user";
 
 const HeaderContainer = styled.div`
   position: sticky;
@@ -45,9 +47,15 @@ const Button = styled.button`
 `
 
 export function Header(props) {
+  const dispatch = useDispatch()
+
+  const onClickMenuButton = () => {
+    dispatch(setMenuVisible())
+  }
+
   return(
     <HeaderContainer>
-      {props.menu ? <Button onClick={props.onClickMenu}>|||</Button> : null}
+      {props.menu ? <Button onClick={onClickMenuButton}>|||</Button> : null}
       <Logo src={logo} alt="Logo FutureTube"/>
     </HeaderContainer>
   );

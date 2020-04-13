@@ -15,8 +15,8 @@ const ContentContainer = styled.div`
 `
 
 const BackgroundImg = styled.img`
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
 `
 
 const TextContent = styled.div`
