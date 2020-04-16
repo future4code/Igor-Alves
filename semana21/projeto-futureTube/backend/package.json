@@ -5,12 +5,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "ts-node-dev ./src/presentation/local/index.ts",
-    "start": "tsc && node ./build/presentation/local/index.js",
+    "start:dev": "ts-node-dev -r dotenv/config ./src/presentation/local/index.ts",
+    "start": "tsc && node -r dotenv/config ./build/presentation/local/index.js",
     "test": "node ./node_modules/jest/bin/jest.js",
     "ziplambda": "bestzip ../lambda.zip ./*",
     "build": "rm -rf build && tsc",
-    "postbuild": "cp ./package.json build && cd build && npm i && npm run ziplambda"
+    "postbuild": "cp ./package.json build && cd build && yarn && npm run ziplambda"
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +24,8 @@
     "@types/nodemailer": "^6.4.0",
     "@types/uuid": "^3.4.6",
     "bcrypt": "^3.0.7",
+    "class-validator": "^0.11.1",
+    "dotenv": "^8.2.0",
     "express": "4.17.1",
     "jest": "^24.9.0",
     "jsonwebtoken": "^8.5.1",

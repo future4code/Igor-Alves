@@ -1,21 +1,19 @@
 import { Request, Response } from "express";
-import { SignupUC } from "../../../business/usecases/user/signup";
 import { UserDatabase } from "../../../data/userDatabase";
 import { BcryptPassword } from "../../../utils/bcrypt";
 import { JWTAutentication } from "../../../utils/jwtAutentication"
+import { ChangePasswordUC } from "../../../business/usecases/user/changePassword";
 import { Validators } from "../../../utils/validators";
 
 
-export const signupEndpoint = async (req: Request, res: Response) => {
+export const changePasswordEndpoint = async (req: Request, res: Response) => {
   try {
-    const uc = new SignupUC(new UserDatabase(), new JWTAutentication(), new BcryptPassword(), new Validators());
+    const uc = new ChangePasswordUC(new UserDatabase(), new BcryptPassword(), new JWTAutentication(), new Validators());
 
     const result = await uc.execute({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-      birthDate: req.body.birthDate,
-      picture: req.body.picture
+      token: req.headers.auth as string,
+      oldPassword: req.body.oldPassword,
+      newPassword: req.body.newPassword
     });
 
     res.status(200).send(result);
@@ -25,4 +23,4 @@ export const signupEndpoint = async (req: Request, res: Response) => {
       ...err
     });
   }
-};  
+}; 

@@ -1,5 +1,5 @@
 export abstract class BaseError extends Error {
-  constructor(public errorCode: number, message: string) {
+  constructor(public statusCode: number, message: string) {
     super(message);
   }
 }
