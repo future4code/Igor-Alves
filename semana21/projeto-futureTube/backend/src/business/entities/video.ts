@@ -65,3 +65,35 @@ export class Video {
     this.userId = userId;
   } 
 }
+
+export class VideoWithUser extends Video {
+  constructor(
+    id: string,
+    url: string,
+    thumbnail: string,
+    title: string,
+    description: string,
+    creationTime: number,
+    userId: string,
+    private userName: string,
+    private userPicture: string
+  ) {
+    super(id, url, thumbnail, title, description, creationTime, userId)
+  }
+
+  public getUserName(): string {
+    return this.userName
+  }
+
+  public setUserName(userName: string): void {
+    this.userName = userName;
+  }
+
+  public getUserPicture(): string {
+    return this.userPicture;
+  }
+
+  public setUserPicture(userPicture: string): void {
+    this.userPicture = userPicture;
+  }
+}

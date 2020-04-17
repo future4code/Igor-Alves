@@ -44,7 +44,7 @@ export class Validators implements ValidatorsGateway {
     }
   }
 
-  public validateUpdateVideoInput(input: any): void {
+  public validateUploadVideoInput(input: any): void {
     if(
       !this.isEmpty(input.url) ||
       !this.isEmpty(input.thumbnail) ||
@@ -54,6 +54,57 @@ export class Validators implements ValidatorsGateway {
       throw new BadRequestError('Missing Input')
     } else if(!this.isEmpty(input.token)) {
       throw new UnauthorizedError("Unauthorized")
+    }
+  }
+
+  public validateGetUserVideoInput(input: any): void {
+    if(
+      !this.isEmpty(input.id) &&
+      !this.isEmpty(input.token)
+    ) {
+      throw new BadRequestError('Missing Input')
+    }
+  }
+
+  public validateUpdateVideoInput(input: any): void {
+    if(
+      !this.isEmpty(input.title) &&
+      !this.isEmpty(input.description) ||
+      !this.isEmpty(input.videoId)
+    ) {
+      throw new BadRequestError('Missing Input')
+    } else if(!this.isEmpty(input.token)) {
+      throw new UnauthorizedError("Unauthorized")
+    }
+  }
+
+  public validateDeleteVideoInput(input: any): void {
+    if(
+      !this.isEmpty(input.videoId)
+    ) {
+      throw new BadRequestError('Missing Input')
+    } else if(!this.isEmpty(input.token)) {
+      throw new UnauthorizedError("Unauthorized")
+    }
+  }
+
+  public validateGetAllVideosInput(input: any): void {
+    if(
+      !this.isEmpty(input.token)
+    ) {
+      throw new UnauthorizedError("Unauthorized")
+    } else if(!this.isEmpty(input.page)) {
+      throw new BadRequestError('Missing Input')
+    }
+  }
+
+  public validateGetVideoDetailsInput(input: any): void {
+    if(
+      !this.isEmpty(input.token)
+    ) {
+      throw new UnauthorizedError("Unauthorized")
+    } else if(!this.isEmpty(input.videoId)) {
+      throw new BadRequestError('Missing Input')
     }
   }
 } 

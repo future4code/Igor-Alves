@@ -31,8 +31,8 @@ export class UserDatabase extends BaseDatabase implements UserGateway {
         '${user.getPassword()}',
         '${this.mapDateToDBDate(user.getBirthDate())}',
         '${user.getPicture()}'
-      );`
-    )
+      );
+    `)
   }
 
   public async getUserByEmail(email: string): Promise<User | undefined> {
@@ -56,10 +56,10 @@ export class UserDatabase extends BaseDatabase implements UserGateway {
   }
 
   public async updatePassword(newPassword: string, userId: string): Promise<void> {
-    await this.connection.raw(
-      `UPDATE users 
+    await this.connection.raw(`
+      UPDATE ${this.userTableName} 
       SET password = '${newPassword}'
-      WHERE id = '${userId}';`
-    )
+      WHERE id = '${userId}';
+    `)
   }
 }

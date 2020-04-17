@@ -25,7 +25,6 @@ export function LoginPage() {
     setForm(initialState)
   };
 
-
   return(
     <>
       <Header/>

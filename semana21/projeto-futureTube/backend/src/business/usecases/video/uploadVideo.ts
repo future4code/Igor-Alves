@@ -12,11 +12,11 @@ export class UploadVideoUC {
     private validators: ValidatorsGateway
   ) {}
 
-  public async execute(input: SignupUCInput): Promise<SignupUCOutput | undefined>{
+  public async execute(input: UploadVideoUCInput): Promise<UploadVideoUCOutput | undefined>{
     try{
       const id = v4();
 
-      this.validators.validateUpdateVideoInput(input)
+      this.validators.validateUploadVideoInput(input)
 
       const userId = this.jwtAuth.verifyToken(input.token)
 
@@ -46,7 +46,7 @@ export class UploadVideoUC {
   }
 }
 
-export interface SignupUCInput {
+export interface UploadVideoUCInput {
   token: string
   url: string
   thumbnail: string
@@ -54,6 +54,6 @@ export interface SignupUCInput {
   description: string
 }
 
-export interface SignupUCOutput {
+export interface UploadVideoUCOutput {
   message: string
 }

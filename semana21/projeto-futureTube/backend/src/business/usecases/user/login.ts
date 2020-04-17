@@ -15,7 +15,7 @@ export class LoginUC {
     private validators: ValidatorsGateway
   ) {}
 
-  public async execute(input: SignupUCInput): Promise<SignupUCOutput | undefined>{
+  public async execute(input: LoginUCInput): Promise<LoginUCOutput | undefined>{
     try{
       const id = v4();
 
@@ -48,12 +48,12 @@ export class LoginUC {
   }
 }
 
-export interface SignupUCInput {
+export interface LoginUCInput {
   email: string
   password: string
 }
 
-export interface SignupUCOutput {
+export interface LoginUCOutput {
   message: string
   token: string
 }
