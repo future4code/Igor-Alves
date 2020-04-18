@@ -21,8 +21,8 @@ export class SignupUC {
 
       this.validators.validateSignupInput(input)
 
-      const user = this.db.getUserByEmail(input.email)
-
+      const user = await this.db.getUserByEmail(input.email)
+      
       if(user) {
         throw new ConflictError('User already registered')
       }

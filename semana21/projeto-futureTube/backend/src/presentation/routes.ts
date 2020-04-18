@@ -21,7 +21,7 @@ app.post("/video/upload", uploadVideoEndpoint)
 app.get("/user/videos", getUserVideosEndpoint)
 app.post("/video/update", updateVideoEndpoint)
 app.post("/video/delete", deleteVideoEndpoint)
-app.get("/video/all", getAllVideosEndpoint)
+app.post("/video/all", getAllVideosEndpoint)
 app.get("/video/details", getVideoDetailsEndpoint)
 
 

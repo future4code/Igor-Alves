@@ -2,6 +2,9 @@ import React, { useState }  from 'react';
 import { useDispatch } from "react-redux";
 import { Header } from '../../components/Header';
 import { LoginForm } from '../../components/LoginForm';
+import { push } from "connected-react-router";
+import { routes } from "../Router";
+import { autenticateLogin } from '../../actions/user'
 
 
 export function LoginPage() {
@@ -21,7 +24,7 @@ export function LoginPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(form)
+    dispatch(autenticateLogin(form))
     setForm(initialState)
   };
 
@@ -33,6 +36,7 @@ export function LoginPage() {
         password={form.password}
         onChange={handleChange}
         onSubmit={handleSubmit}
+        signupPage={() => dispatch(push(routes.signup))}
       />
     </>
   );

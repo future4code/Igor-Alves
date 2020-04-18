@@ -1,4 +1,3 @@
-import { v4 } from "uuid";
 import { UserGateway } from "../../gateways/userGateway";
 import { BcryptGateway } from "../../gateways/bcryptGateway";
 import { JWTAutenticationGateway } from "../../gateways/jwtAutenticationGateway";
@@ -17,8 +16,6 @@ export class LoginUC {
 
   public async execute(input: LoginUCInput): Promise<LoginUCOutput | undefined>{
     try{
-      const id = v4();
-
       this.validators.validateLoginInput(input)
       
       const user = await this.db.getUserByEmail(input.email)
@@ -36,7 +33,7 @@ export class LoginUC {
       const token = this.jwtAuth.generateToken(user.getId());
       
       return {
-        message:"User successfully logged in",
+        message: "User successfully logged in",
         token: token
       };
     }catch(err){

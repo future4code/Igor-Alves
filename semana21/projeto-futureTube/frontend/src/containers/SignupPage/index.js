@@ -2,6 +2,7 @@ import React, { useState }  from 'react';
 import { useDispatch } from "react-redux";
 import { Header } from '../../components/Header';
 import { SignupForm } from '../../components/SignupForm';
+import { userSignup } from '../../actions/user'
 
 
 export function SignupPage() {
@@ -9,6 +10,8 @@ export function SignupPage() {
     name: '',
     email: '',
     password: '',
+    birthDate: '',
+    picture: ''
   }
 
   const [form, setForm] = useState(initialState)
@@ -22,7 +25,7 @@ export function SignupPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(form)
+    dispatch(userSignup(form))
     setForm(initialState)
   };
 
@@ -30,8 +33,11 @@ export function SignupPage() {
     <>
       <Header/>
       <SignupForm
+        name={form.name}
         email={form.email}
         password={form.password}
+        birthDate={form.birthDate}
+        picture={form.picture}
         onChange={handleChange}
         onSubmit={handleSubmit}
       />

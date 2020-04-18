@@ -1,13 +1,12 @@
 const initialState = {
-  visibleMenu: false,
+  visibleMenu: false
 }
 
-
 const user = (state = initialState, action) => {
-  switch(action.type){
+  switch(action.type) {
     case 'SET_MENU_VISIBLE':
       const revertMenu = !state.visibleMenu
-      return {...state, visibleMenu: revertMenu};
+      return {...state, visibleMenu: revertMenu}
     default:
       return state
   }

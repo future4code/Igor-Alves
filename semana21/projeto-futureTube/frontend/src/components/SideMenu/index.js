@@ -9,6 +9,7 @@ import User from '../../resources/user.svg';
 import Logout from '../../resources/logout.svg';
 import { routes } from '../../containers/Router';
 import { push } from "connected-react-router";
+import { userLogout } from '../../actions/user'
 
 
 const MenuContainer = styled.aside`
@@ -27,7 +28,7 @@ const MenuContainer = styled.aside`
 `
 
 
-export function SideMenu(props) {
+export function SideMenu() {
   const dispatch = useDispatch()
 
   return(
@@ -55,7 +56,7 @@ export function SideMenu(props) {
       <MenuItem 
         icon={Logout} 
         text="Logout" 
-        changePage={() => dispatch(push(routes.login))}
+        changePage={() => dispatch(userLogout())}
       />
     </MenuContainer>
   );

@@ -70,7 +70,7 @@ export function LoginForm(props) {
       />
       <Button>Entrar</Button>
       <RegisterSlogan>
-        <span>Ainda não é cadastrado? </span><span>Click Aqui</span>
+        <span>Ainda não é cadastrado? </span><span onClick={props.signupPage}>Click Aqui</span>
       </RegisterSlogan>
     </FormContainer>
   );

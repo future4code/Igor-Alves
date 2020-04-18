@@ -1,20 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { Header } from '../../components/Header';
 import { ContentDisplay } from '../../components/ContentDisplay';
 import { SideMenu } from '../../components/SideMenu';
 import { VideoGrid } from '../../components/VideoGrid';
 import { VideoCard } from '../../components/VideoCard';
-import { setMenuVisible } from "../../actions/user";
+import { getAllVideos } from "../../actions/video";
+import * as moment from 'moment'; 
+import 'moment/locale/pt-br';
 
 
 export function HomePage() {
-  const visibleMenu = useSelector(state => state.user.visibleMenu)
-  const dispatch = useDispatch()
+  const visibleMenu = useSelector((state) => state.user.visibleMenu);
+  const allVideos = useSelector((state) => state.video.allVideos)
+  const dispatch = useDispatch();
 
-  const onClickMenuButton = () => {
-    dispatch(setMenuVisible())
-  }
+  useEffect(() => {
+    dispatch(getAllVideos(1))
+  }, [dispatch]);
 
   return(
     <>
@@ -22,14 +25,16 @@ export function HomePage() {
       <ContentDisplay>
         { visibleMenu ? <SideMenu/> : null }
         <VideoGrid>
-          <VideoCard/>
-          <VideoCard/>
-          <VideoCard/>
-          <VideoCard/>
-          <VideoCard/>
-          <VideoCard/>
-          <VideoCard/>
-          <VideoCard/>
+          { allVideos && allVideos.map((video) => (
+            <VideoCard
+              key={video.id}
+              thumbnail={video.thumbnail}
+              avatar={video.userPicture}
+              title={video.title}
+              author={video.userName}
+              postDate={moment(video.creationTime).locale('pt-br').startOf('day').fromNow()}
+            />
+          ))}
         </VideoGrid>
       </ContentDisplay>
     </>

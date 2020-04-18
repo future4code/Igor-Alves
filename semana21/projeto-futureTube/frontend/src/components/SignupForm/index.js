@@ -18,7 +18,7 @@ const FormContainer = styled.form`
 
 const FormHeader = styled.h2`
   margin-top: 0;
-  margin-bottom: 70px;
+  margin-bottom: 60px;
 `
 
 const Input = styled.input`
@@ -32,7 +32,7 @@ const Input = styled.input`
   ::placeholder{
     text-align: center;
   }
-  margin-bottom: 10%;
+  margin-bottom: 7%;
 `
 
 const Button = styled.button`
@@ -71,6 +71,22 @@ export function SignupForm(props) {
         placeholder='Senha'
         onChange={props.onChange}
         value={props.password}
+        required
+      />
+      <Input
+        type='text'
+        name='birthDate'
+        placeholder='Data de Nascimento'
+        onChange={props.onChange}
+        value={props.birthDate}
+        required
+      />
+      <Input
+        type='text'
+        name='picture'
+        placeholder='Foto de perfil'
+        onChange={props.onChange}
+        value={props.picture}
         required
       />
       <Button>Enviar</Button>

@@ -1,6 +1,6 @@
 import React from "react";
 import { ConnectedRouter } from "connected-react-router";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { LoginPage } from "../LoginPage";
 import { SignupPage } from "../SignupPage"
 import { HomePage } from "../HomePage";
@@ -18,6 +18,23 @@ export const routes = {
   videos: "/myvideos",
 };
 
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props => 
+      isAutenticated() ? (
+        <Component {...props}/>
+      ) : (
+        <Redirect to={{ pathname: "/login", state: { from: props.location } }} />
+      )
+    }
+  />
+);
+
+function isAutenticated() {
+  const token = window.localStorage.getItem("token")
+  return token ? true : false 
+}
 
 function Router(props) {
   return (
@@ -25,10 +42,10 @@ function Router(props) {
       <Switch>
         <Route exact path={routes.login} component={LoginPage} />
         <Route exact path={routes.signup} component={SignupPage} />
-        <Route exact path={routes.home} component={HomePage} />
-        <Route exact path={routes.upload} component={UploadPage} />
-        <Route exact path={routes.account} component={AccountPage} />
-        <Route exact path={routes.videos} component={VideosPage} />
+        <PrivateRoute exact path={routes.home} component={HomePage} />
+        <PrivateRoute exact path={routes.upload} component={UploadPage} />
+        <PrivateRoute exact path={routes.account} component={AccountPage} />
+        <PrivateRoute exact path={routes.videos} component={VideosPage} />
       </Switch>
     </ConnectedRouter>
   );
