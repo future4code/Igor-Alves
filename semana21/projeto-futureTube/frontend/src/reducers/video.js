@@ -1,6 +1,7 @@
 const initialState = {
   allVideos: [],
-  userVideos: []
+  userVideos: [],
+  videoDetails: null
 }
 
 const video = (state = initialState, action) => {
@@ -11,6 +12,9 @@ const video = (state = initialState, action) => {
     case 'SET_USER_VIDEOS':
       const userVideos = action.payload.userVideos
       return {...state, userVideos: userVideos}
+    case 'SET_VIDEO_DETAILS':
+      const videoDetails = action.payload.videoDetails
+      return {...state, videoDetails: videoDetails}
     default:
       return state
   }

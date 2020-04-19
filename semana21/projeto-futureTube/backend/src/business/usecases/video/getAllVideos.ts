@@ -11,7 +11,7 @@ export class GetAllVideosUC {
     private validators: ValidatorsGateway
   ) {}
 
-  private POSTS_PER_PAGE = 10;
+  private POSTS_PER_PAGE = 12;
 
   public async execute(input: GetAllVideosUCInput): Promise<GetAllVideosUCOutput | undefined> {
     try{

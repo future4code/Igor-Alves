@@ -14,7 +14,7 @@ const CardContainer = styled.div`
 `
 
 const Thumbnail = styled.img`
-  max-height: 60%;
+  height: 27vh;
   width: 100%;
   @media (max-height: 768px) {
     max-height: 190px;
@@ -65,7 +65,7 @@ const InfoContainer = styled.div`
 
 export function VideoCard(props) {
   return(
-    <CardContainer onClick={() => {console.log("Dispatch pagina de video")}}>
+    <CardContainer onClick={props.onClick}>
       <Thumbnail src={props.thumbnail}/>
       <InfoContainer>
         <Avatar src={props.avatar}/>

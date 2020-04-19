@@ -1,4 +1,6 @@
 import axios from "axios";
+import { push } from "connected-react-router";
+import { routes } from "../containers/Router";
 
 const baseURL = "http://localhost:5000"
 
@@ -93,5 +95,61 @@ export const uploadVideo = (form) => async () => {
     window.alert("Video enviado com sucesso");
   } catch(error) {
     window.alert("Ocorreu um erro ao subir este video");
+  }
+}
+
+export const getVideoDetails = (videoId) => async (dispatch) => {
+  const token =  window.localStorage.getItem("token");
+
+  const axiosConfig = {
+    headers: {
+      auth: token
+    }
+  };
+
+  const body = {
+    videoId,
+  }
+
+  try {
+    const response = await axios.post(`${baseURL}/video/details`, body, axiosConfig);
+
+    dispatch(setVideoDetais(response.data.videoDetails));
+    dispatch(push(routes.videoDetails))
+  } catch(error) {
+    window.alert("Ocorreu um erro ao carregar os pegar os dados deste video");
+  }
+}
+
+export const setVideoDetais = (videoDetails) => ({
+  type: 'SET_VIDEO_DETAILS',
+  payload: {
+    videoDetails,
+  }
+});
+
+export const updateVideoInfo = (videoId, form) => async (dispatch) => {
+  const token =  window.localStorage.getItem("token");
+
+  const axiosConfig = {
+    headers: {
+      auth: token
+    }
+  };
+
+  const body = {
+    videoId,
+    title: form.title,
+    description: form.description
+  }
+
+  try {
+    await axios.post(`${baseURL}/video/update`, body, axiosConfig);
+
+    dispatch(getUserVideos());
+    
+    window.alert("Titulo e descrição atualizados com sucesso.");
+  } catch(error) {
+    window.alert("Ocorreu um erro ao atualizar os dados deste video");
   }
 }

@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch } from "react-redux";
 import styled from 'styled-components';
 import logo from '../../resources/logo.png';
+import { push } from "connected-react-router";
+import { routes } from "../../containers/Router";
 import { setMenuVisible } from "../../actions/user";
 
 const HeaderContainer = styled.div`
@@ -53,10 +55,14 @@ export function Header(props) {
     dispatch(setMenuVisible())
   }
 
+  const onClickLogo = () => {
+    dispatch(push(routes.home))
+  }
+
   return(
     <HeaderContainer>
       {props.menu ? <Button onClick={onClickMenuButton}>|||</Button> : null}
-      <Logo src={logo} alt="Logo FutureTube"/>
+      <Logo onClick={onClickLogo} src={logo} alt="Logo FutureTube"/>
     </HeaderContainer>
   );
 }

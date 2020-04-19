@@ -7,15 +7,17 @@ import { HomePage } from "../HomePage";
 import { UploadPage } from "../UploadPage";
 import { AccountPage } from "../AccountPage";
 import { VideosPage } from "../VideosPage";
+import { VideoDetailsPage } from "../VideoDetailsPage";
 
 
 export const routes = {
-  login: "/login",
+  login: "/",
   signup: "/signup",
-  home: "/",
+  home: "/home",
   upload: "/upload",
   account: "/account",
   videos: "/myvideos",
+  videoDetails: "/video",
 };
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -25,7 +27,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       isAutenticated() ? (
         <Component {...props}/>
       ) : (
-        <Redirect to={{ pathname: "/login", state: { from: props.location } }} />
+        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
       )
     }
   />
@@ -46,6 +48,7 @@ function Router(props) {
         <PrivateRoute exact path={routes.upload} component={UploadPage} />
         <PrivateRoute exact path={routes.account} component={AccountPage} />
         <PrivateRoute exact path={routes.videos} component={VideosPage} />
+        <PrivateRoute exact path={routes.videoDetails} component={VideoDetailsPage} />
       </Switch>
     </ConnectedRouter>
   );

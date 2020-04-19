@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import DeleteIcon from '../../resources/delete.svg';
+import EditIcon from '../../resources/edit.svg';
 
 
 const ItemContainer = styled.div`
@@ -34,6 +35,14 @@ const DeleteButton = styled.img`
   margin-right: 2em;
 `
 
+const EditButton = styled.img`
+  width: 25px;
+  height: 25px;
+  align-self: center;
+  justify-self: flex-end;
+  margin-right: 2em;
+`
+
 const ButtonContent = styled.div`
   width: 50%;
   display: flex;
@@ -50,6 +59,7 @@ export function VideoItem(props) {
         <p>{props.postDate}</p>
       </TextContent>
       <ButtonContent>
+        <EditButton src={EditIcon} onClick={props.onEdit}/>
         <DeleteButton src={DeleteIcon} onClick={props.onDelete}/>
       </ButtonContent>
     </ItemContainer>
