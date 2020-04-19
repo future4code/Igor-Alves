@@ -27,10 +27,6 @@ export class GetUserVideosUC {
         const userId = this.jwtAuth.verifyToken(input.token)
         userVideos = await this.db.getUserVideos(userId)
       }
-
-      if(userVideos.length === 0) {
-        throw new NotFoundError("This user has no videos")
-      }
     
       return {
         userVideos: userVideos

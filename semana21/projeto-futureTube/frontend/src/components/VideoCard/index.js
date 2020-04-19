@@ -14,8 +14,23 @@ const CardContainer = styled.div`
 `
 
 const Thumbnail = styled.img`
-  height: 60%;
+  max-height: 60%;
   width: 100%;
+  @media (max-height: 768px) {
+    max-height: 190px;
+  }
+  @media (min-height: 900px) {
+    max-height: 230px;
+  }
+  @media (min-height: 1024px) {
+    max-height: 210px;
+  }
+  @media (min-height: 1080px) {
+    max-height: 270px;
+  }
+  @media (min-height: 1600px) {
+    max-height: 360px;
+  }
 `
 
 const Title = styled.h3`

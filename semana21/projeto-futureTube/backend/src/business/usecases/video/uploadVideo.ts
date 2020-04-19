@@ -3,7 +3,8 @@ import { JWTAutenticationGateway } from "../../gateways/jwtAutenticationGateway"
 import { ValidatorsGateway } from "../../gateways/validatorsGateway";
 import { VideoGateway } from "../../gateways/videoGateway";
 import { Video } from "../../entities/video";
-
+import moment  from 'moment'; 
+import 'moment/locale/pt-br';
 
 export class UploadVideoUC {
   constructor(
@@ -20,7 +21,7 @@ export class UploadVideoUC {
 
       const userId = this.jwtAuth.verifyToken(input.token)
 
-      const creationTimestamp = new Date().getTime()
+      const creationMoment = moment().toISOString()
 
       const newVideo = new Video(
         id,
@@ -28,12 +29,12 @@ export class UploadVideoUC {
         input.thumbnail,
         input.title,
         input.description,
-        creationTimestamp,
+        creationMoment,
         userId
       )
   
       await this.db.uploadVideo(newVideo);
-            
+
       return {
         message:"Video successfully created"
       };

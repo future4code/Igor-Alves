@@ -6,10 +6,6 @@ import { User } from "../business/entities/user";
 export class UserDatabase extends BaseDatabase implements UserGateway {
   private userTableName = "users";
 
-  private mapDateToDBDate(input: Date): string {
-    return input.toISOString().slice(0, 19).replace('T', ' ');
-  }
-
   private mapDBDataToUser(input: any): User {
     return new User(
       input.id, 
@@ -29,7 +25,7 @@ export class UserDatabase extends BaseDatabase implements UserGateway {
         '${user.getName()}',
         '${user.getEmail()}',
         '${user.getPassword()}',
-        '${this.mapDateToDBDate(user.getBirthDate())}',
+        '${user.getBirthDate()}',
         '${user.getPicture()}'
       );
     `)

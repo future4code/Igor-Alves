@@ -25,16 +25,17 @@ export function HomePage() {
       <ContentDisplay>
         { visibleMenu ? <SideMenu/> : null }
         <VideoGrid>
-          { allVideos && allVideos.map((video) => (
+          { allVideos ? allVideos.map((video) => (
             <VideoCard
               key={video.id}
               thumbnail={video.thumbnail}
               avatar={video.userPicture}
               title={video.title}
               author={video.userName}
-              postDate={moment(video.creationTime).locale('pt-br').startOf('day').fromNow()}
+              postDate={moment(video.creationTime).locale('pt-br').fromNow()}
             />
-          ))}
+          )):
+          <p> Não há nenhum video publicado </p> }
         </VideoGrid>
       </ContentDisplay>
     </>

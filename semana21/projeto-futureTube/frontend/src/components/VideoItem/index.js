@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import DeleteIcon from '../../resources/delete.svg'
+import DeleteIcon from '../../resources/delete.svg';
 
 
 const ItemContainer = styled.div`
@@ -44,13 +44,13 @@ const ButtonContent = styled.div`
 export function VideoItem(props) {
   return(
     <ItemContainer>
-      <VideoCover src='https://i.ytimg.com/vi/LzE45Wfd5zo/maxresdefault.jpg'/>
+      <VideoCover src={props.thumbnail}/>
       <TextContent>
-        <h3>Dusk | Chillstep Mix</h3>
-        <p>há 2 anos</p>
+        <h3>{props.title}</h3>
+        <p>{props.postDate}</p>
       </TextContent>
       <ButtonContent>
-        <DeleteButton src={DeleteIcon}/>
+        <DeleteButton src={DeleteIcon} onClick={props.onDelete}/>
       </ButtonContent>
     </ItemContainer>
   );

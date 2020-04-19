@@ -67,21 +67,21 @@ export function AccountForm(props) {
       <FormContainer onSubmit={props.onSubmit}>
         <Input
           name='oldPassword'
-          type="text"
+          type="password"
           onChange={props.onChange}
           value={props.oldPassword}
           placeholder='Senha Antiga'
         />
         <Input 
           name='newPassword'
-          type="text"
+          type="password"
           onChange={props.onChange}
-          value={props.thumbnail}
+          value={props.newPassword}
           placeholder='Senha Nova'
         />
         <Input 
           name='confirmPassword'
-          type="text"
+          type="password"
           onChange={props.onChange}
           value={props.confirmPassword}
           placeholder='Confirmar Senha Nova'

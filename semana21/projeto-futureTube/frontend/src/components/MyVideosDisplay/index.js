@@ -35,7 +35,7 @@ const VideoContainer = styled.div`
   flex-direction: column;
   align-items: center;
   overflow: auto;
-  background-color: #fafbfc;
+  background-color: #ffffff;
 `
 
 export function MyVideosDisplay(props) {

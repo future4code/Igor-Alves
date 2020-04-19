@@ -66,7 +66,7 @@ export function UploadForm(props) {
       </TextContent>
       <FormContainer onSubmit={props.onSubmit}>
         <Input
-          name='video'
+          name='url'
           type="text"
           onChange={props.onChange}
           value={props.video}

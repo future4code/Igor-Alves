@@ -5,6 +5,8 @@ import { BcryptGateway } from "../../gateways/bcryptGateway";
 import { JWTAutenticationGateway } from "../../gateways/jwtAutenticationGateway";
 import { ValidatorsGateway } from "../../gateways/validatorsGateway";
 import { ConflictError } from "../../errors/conflictError";
+import moment  from 'moment'; 
+import 'moment/locale/pt-br';
 
 
 export class SignupUC {
@@ -34,10 +36,10 @@ export class SignupUC {
         input.name,
         input.email,
         hashPassword,
-        new Date(input.birthDate),
+        moment(input.birthDate, 'L').locale('pt-br').format(),
         input.picture
       )
-  
+      
       await this.db.createUser(newUser);
       
       const token = this.jwtAuth.generateToken(id);

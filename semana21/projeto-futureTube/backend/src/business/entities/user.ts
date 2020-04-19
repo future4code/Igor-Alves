@@ -4,7 +4,7 @@ export class User {
     private name: string,
     private email: string,
     private password: string,
-    private birthDate: Date,
+    private birthDate: string,
     private picture: string
   ) {}
 
@@ -40,11 +40,11 @@ export class User {
     this.password = password;
   } 
 
-  public getBirthDate(): Date {
+  public getBirthDate(): string {
     return this.birthDate
   }
 
-  public setBirthDate(birthDate: Date): void {
+  public setBirthDate(birthDate: string): void {
     this.birthDate = birthDate;
   } 
 

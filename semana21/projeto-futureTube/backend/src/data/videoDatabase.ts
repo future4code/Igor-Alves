@@ -13,7 +13,7 @@ export class VideoDatabase extends BaseDatabase implements VideoGateway {
       input.thumbnail, 
       input.title, 
       input.description, 
-      Number(input.creationTime),
+      input.creationTime,
       input.userId
     )
   }
@@ -25,7 +25,7 @@ export class VideoDatabase extends BaseDatabase implements VideoGateway {
       input.thumbnail, 
       input.title, 
       input.description, 
-      Number(input.creationTime),
+      input.creationTime,
       input.userId,
       input.userName,
       input.userPicture
@@ -51,7 +51,8 @@ export class VideoDatabase extends BaseDatabase implements VideoGateway {
     const result = await this.connection.raw(`
       SELECT * 
       FROM ${this.videoTableName}
-      WHERE userId = '${userId}';
+      WHERE userId = '${userId}'
+      ORDER BY creationTime DESC;
     `)
 
     return result[0] && result[0].map((video: any) => {

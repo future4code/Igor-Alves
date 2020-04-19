@@ -53,3 +53,21 @@ export const userLogout = () => async (dispatch) => {
   window.localStorage.removeItem("token");
   dispatch(push(routes.login))
 }
+
+export const changePassword = (form) => async (dispatch) => {
+  try{
+    const token =  window.localStorage.getItem("token");
+    
+    const axiosConfig = {
+      headers: {
+        auth: token
+      }
+    };
+    
+    await axios.post(`${baseURL}/changepassword`, form, axiosConfig)
+
+    window.alert("Senha alterada com sucesso")
+  }catch(error) {
+    window.alert("Senha antiga incorreta")
+  }
+}

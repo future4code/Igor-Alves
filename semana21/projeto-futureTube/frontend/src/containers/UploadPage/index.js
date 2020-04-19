@@ -4,11 +4,12 @@ import { Header } from '../../components/Header';
 import { ContentDisplay } from '../../components/ContentDisplay';
 import { SideMenu } from '../../components/SideMenu';
 import { UploadForm } from '../../components/UploadForm';
+import { uploadVideo } from '../../actions/video'
 
 
 export function UploadPage() {
   const initialState = {
-    video: '',
+    url: '',
     thumbnail: '',
     title: '',
     description: '',
@@ -26,7 +27,7 @@ export function UploadPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(form)
+    dispatch(uploadVideo(form))
     setForm(initialState)
   };
 
@@ -36,7 +37,7 @@ export function UploadPage() {
       <ContentDisplay>
         { visibleMenu ? <SideMenu/> : null }
         <UploadForm
-          video={form.video}
+          video={form.url}
           thumbnail={form.thumbnail}
           title={form.title}
           description={form.description}

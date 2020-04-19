@@ -5,7 +5,7 @@ export class Video {
     private thumbnail: string,
     private title: string,
     private description: string,
-    private creationTime: number,
+    private creationTime: string,
     private userId: string
   ) {}
 
@@ -49,11 +49,11 @@ export class Video {
     this.description = description;
   } 
 
-  public getCreationTime(): number {
+  public getCreationTime(): string {
     return this.creationTime
   }
 
-  public setCreationTime(creationTime: number): void {
+  public setCreationTime(creationTime: string): void {
     this.creationTime = creationTime;
   } 
 
@@ -73,7 +73,7 @@ export class VideoWithUser extends Video {
     thumbnail: string,
     title: string,
     description: string,
-    creationTime: number,
+    creationTime: string,
     userId: string,
     private userName: string,
     private userPicture: string

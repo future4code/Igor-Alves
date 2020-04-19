@@ -4,7 +4,7 @@ import { Header } from '../../components/Header';
 import { ContentDisplay } from '../../components/ContentDisplay';
 import { SideMenu } from '../../components/SideMenu';
 import { AccountForm } from '../../components/AccountForm';
-import { setMenuVisible } from "../../actions/user";
+import { changePassword } from "../../actions/user";
 
 
 export function AccountPage() {
@@ -24,9 +24,19 @@ export function AccountPage() {
     setForm(auxForm);
   };
 
+  const confirmNewPassword = (form) => {
+    if(form.newPassword !== form.confirmPassword) {
+      window.alert("A senha nova deve bater com a confirmação");
+      return false
+    }
+    return true
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(form)
+    if(confirmNewPassword(form)) {
+      dispatch(changePassword(form))
+    }
     setForm(initialState)
   };
 
