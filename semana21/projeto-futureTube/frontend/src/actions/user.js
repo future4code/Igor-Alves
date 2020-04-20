@@ -63,7 +63,7 @@ export const changePassword = (form) => async (dispatch) => {
 
     const axiosConfig = {
       headers: {
-        auth: token,
+        Authorization: token,
       },
     };
 

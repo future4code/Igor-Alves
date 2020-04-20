@@ -51,7 +51,7 @@ export function VideosPage() {
       <ContentDisplay>
         { visibleMenu ? <SideMenu/> : null }
         <MyVideosDisplay>
-          { userVideos.length !== 0 ? userVideos.map((video) => (
+          {userVideos.length !== 0 ? userVideos.map((video) => (
             <VideoItem
               key={video.id}
               thumbnail={video.thumbnail}

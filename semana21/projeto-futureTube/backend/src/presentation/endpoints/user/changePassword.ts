@@ -11,7 +11,7 @@ export const changePasswordEndpoint = async (req: Request, res: Response) => {
     const uc = new ChangePasswordUC(new UserDatabase(), new BcryptPassword(), new JWTAutentication(), new Validators());
 
     const result = await uc.execute({
-      token: req.headers.auth as string,
+      token: (req.headers.Authorization || req.headers.authorization) as string,
       oldPassword: req.body.oldPassword,
       newPassword: req.body.newPassword
     });

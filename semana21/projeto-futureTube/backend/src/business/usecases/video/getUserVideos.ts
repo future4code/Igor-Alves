@@ -1,9 +1,7 @@
-import { v4 } from "uuid";
 import { JWTAutenticationGateway } from "../../gateways/jwtAutenticationGateway";
 import { ValidatorsGateway } from "../../gateways/validatorsGateway";
 import { VideoGateway } from "../../gateways/videoGateway";
 import { Video } from "../../entities/video";
-import { NotFoundError } from "../../errors/notFoundError";
 
 
 export class GetUserVideosUC {
@@ -13,13 +11,11 @@ export class GetUserVideosUC {
     private validators: ValidatorsGateway
   ) {}
 
-  public async execute(input: GetUserVideosUCInput): Promise<GetUserVideosUCOutput | undefined>{
+  public async execute(input: GetUserVideosUCInput): Promise<GetUserVideosUCOutput>{
     try{
-      const id = v4();
-
       this.validators.validateGetUserVideoInput(input)
 
-      let userVideos: Video[] | undefined
+      let userVideos: Video[]
 
       if(input.id) {
         userVideos = await this.db.getUserVideos(input.id)
@@ -42,7 +38,7 @@ export class GetUserVideosUC {
 
 export interface GetUserVideosUCInput {
   token: string
-  id: string
+  id?: string
 }
 
 export interface GetUserVideosUCOutput {

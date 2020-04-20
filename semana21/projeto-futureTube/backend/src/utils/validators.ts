@@ -58,6 +58,7 @@ export class Validators implements ValidatorsGateway {
   }
 
   public validateGetUserVideoInput(input: any): void {
+
     if(
       !this.isEmpty(input.id) &&
       !this.isEmpty(input.token)
