@@ -2,7 +2,7 @@ import axios from "axios";
 import { push } from "connected-react-router";
 import { routes } from "../containers/Router";
 
-const baseURL = "http://localhost:5000"
+const baseURL = "https://m7z1d9ye75.execute-api.us-east-1.amazonaws.com/V1"
 
 export const setMenuVisible = () => ({
   type: 'SET_MENU_VISIBLE',
